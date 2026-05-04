@@ -1,0 +1,4 @@
+# requirements-test.txt
+pytest==8.0.0
+pytest-django==4.7.0
+coverage==7.4.0

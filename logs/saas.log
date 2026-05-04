@@ -1,0 +1,656 @@
+INFO 2026-04-29 13:55:32,246 autoreload 11060 8880 Watching for file changes with StatReloader
+INFO 2026-04-29 13:58:38,451 autoreload 11060 8880 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-04-29 13:58:39,489 autoreload 24748 14176 Watching for file changes with StatReloader
+INFO 2026-04-29 13:59:41,336 autoreload 24748 14176 C:\Users\HP\multi_tenant_saas\comments\models.py changed, reloading.
+INFO 2026-04-29 13:59:42,301 autoreload 27680 10700 Watching for file changes with StatReloader
+INFO 2026-04-29 14:02:10,397 autoreload 27680 10700 C:\Users\HP\multi_tenant_saas\comments\models.py changed, reloading.
+INFO 2026-04-29 14:02:11,262 autoreload 13388 10260 Watching for file changes with StatReloader
+INFO 2026-04-29 14:02:56,345 log 13388 5020 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-29 14:03:59,675 log 13388 9092 "GET /api/projects/dashboard/stats/ HTTP/1.1" 200 208
+INFO 2026-04-29 14:04:05,763 log 13388 25500 "GET /api/projects/ HTTP/1.1" 200 2352
+INFO 2026-04-29 14:04:11,819 log 13388 12408 "GET /api/activity-feed/ HTTP/1.1" 200 2406
+INFO 2026-04-29 14:04:19,887 log 13388 13836 "GET /api/project-templates/ HTTP/1.1" 200 1192
+INFO 2026-04-29 14:04:25,486 log 13388 344 "GET /api/search/global/?q=project HTTP/1.1" 200 1085
+INFO 2026-04-29 14:04:31,076 log 13388 8664 "GET /api/dashboard/realtime/ HTTP/1.1" 200 337
+INFO 2026-04-29 14:04:37,029 log 13388 28100 "GET /api/reports/advanced/ HTTP/1.1" 200 578
+INFO 2026-04-29 14:04:42,199 log 13388 16340 "GET /health/ HTTP/1.1" 200 109
+INFO 2026-04-29 14:04:48,207 log 13388 27500 "GET /api/projects/export/projects/csv/ HTTP/1.1" 200 673
+INFO 2026-04-29 22:31:53,099 log 13388 3144 "GET /swagger/ HTTP/1.1" 200 2170
+INFO 2026-04-29 22:31:53,133 log 13388 3144 "GET /static/drf-yasg/style.css HTTP/1.1" 200 1187
+INFO 2026-04-29 22:31:53,141 log 13388 16132 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 200 177183
+INFO 2026-04-29 22:31:53,143 log 13388 3144 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 200 252451
+INFO 2026-04-29 22:31:53,147 log 13388 16132 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 200 2093
+INFO 2026-04-29 22:31:53,149 log 13388 3144 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 200 56904
+INFO 2026-04-29 22:31:53,150 log 13388 16132 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 200 15480
+INFO 2026-04-29 22:31:53,154 log 13388 18808 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 200 1510271
+INFO 2026-04-29 22:31:53,375 log 13388 16132 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 200 628
+INFO 2026-04-29 22:31:53,837 log 13388 18808 "GET /swagger/?format=openapi HTTP/1.1" 200 47127
+INFO 2026-04-30 06:08:08,403 autoreload 13388 10260 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-04-30 06:08:11,042 autoreload 26372 9488 Watching for file changes with StatReloader
+INFO 2026-04-30 06:08:27,978 autoreload 26720 27992 Watching for file changes with StatReloader
+INFO 2026-04-30 06:11:25,299 autoreload 26372 9488 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-04-30 06:11:25,518 autoreload 26720 27992 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-04-30 06:11:26,260 autoreload 25556 8036 Watching for file changes with StatReloader
+INFO 2026-04-30 06:11:26,345 autoreload 20044 7420 Watching for file changes with StatReloader
+INFO 2026-04-30 06:29:31,273 autoreload 7120 12800 Watching for file changes with StatReloader
+INFO 2026-04-30 06:40:13,685 autoreload 24032 12336 Watching for file changes with StatReloader
+WARNING 2026-04-30 06:40:26,402 log 24032 7980 "GET /api/auth/login/ HTTP/1.1" 405 40
+WARNING 2026-04-30 06:40:26,441 log 24032 7980 "GET /favicon.ico HTTP/1.1" 404 6970
+INFO 2026-04-30 06:47:01,008 autoreload 27784 1644 Watching for file changes with StatReloader
+WARNING 2026-04-30 06:48:36,213 log 27784 4228 "GET /api/auth/login/ HTTP/1.1" 405 40
+WARNING 2026-04-30 06:48:36,244 log 27784 4228 "GET /favicon.ico HTTP/1.1" 404 6970
+INFO 2026-04-30 06:51:35,534 autoreload 4228 4700 Watching for file changes with StatReloader
+INFO 2026-04-30 07:14:43,432 autoreload 7 124267681813248 Watching for file changes with StatReloader
+INFO 2026-04-30 16:04:02,544 autoreload 25512 19336 Watching for file changes with StatReloader
+INFO 2026-04-30 16:04:42,878 log 25512 19508 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 16:05:32,007 autoreload 7800 1168 Watching for file changes with StatReloader
+INFO 2026-04-30 16:05:49,411 log 7800 27840 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 16:05:51,670 log 7800 28572 "GET /api/projects/ HTTP/1.1" 200 2352
+INFO 2026-04-30 16:05:53,879 log 7800 13236 "GET /api/projects/dashboard/stats/ HTTP/1.1" 200 208
+INFO 2026-04-30 21:02:53,358 log 7800 11544 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 21:02:53,925 log 7800 24676 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 21:02:55,445 log 7800 13512 "POST /api/projects/ HTTP/1.1" 201 289
+INFO 2026-04-30 21:02:55,991 log 7800 3020 "POST /api/projects/ HTTP/1.1" 201 289
+INFO 2026-04-30 21:02:58,814 log 7800 15044 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 21:02:59,486 log 7800 13532 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 21:03:00,978 log 7800 12656 "GET /api/organizations/ HTTP/1.1" 200 21
+INFO 2026-04-30 21:03:01,552 log 7800 14312 "GET /api/organizations/ HTTP/1.1" 200 21
+INFO 2026-04-30 21:03:03,050 log 7800 7436 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-04-30 21:03:03,629 log 7800 25424 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-04-30 21:09:19,424 log 7800 9660 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 21:09:21,570 log 7800 28056 "POST /api/projects/ HTTP/1.1" 201 289
+INFO 2026-04-30 21:09:25,266 log 7800 28276 "POST /api/auth/login/ HTTP/1.1" 200 595
+INFO 2026-04-30 21:09:27,340 log 7800 900 "GET /api/organizations/ HTTP/1.1" 200 21
+INFO 2026-04-30 21:09:29,489 log 7800 4252 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-01 05:01:51,923 autoreload 7800 1168 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:01:53,466 autoreload 7012 18628 Watching for file changes with StatReloader
+INFO 2026-05-01 05:04:05,815 autoreload 7012 18628 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:04:07,230 autoreload 7164 1924 Watching for file changes with StatReloader
+INFO 2026-05-01 05:21:45,099 autoreload 7164 1924 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:21:46,423 autoreload 12656 16932 Watching for file changes with StatReloader
+INFO 2026-05-01 05:24:49,262 autoreload 12656 16932 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:24:50,646 autoreload 1920 21852 Watching for file changes with StatReloader
+INFO 2026-05-01 05:31:39,648 autoreload 1920 21852 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:31:41,016 autoreload 4128 23004 Watching for file changes with StatReloader
+INFO 2026-05-01 05:37:24,775 autoreload 27660 2072 Watching for file changes with StatReloader
+INFO 2026-05-01 05:41:52,671 autoreload 27660 2072 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:41:53,529 autoreload 7260 11556 Watching for file changes with StatReloader
+INFO 2026-05-01 05:49:56,140 autoreload 7260 11556 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:49:57,156 autoreload 19052 17396 Watching for file changes with StatReloader
+INFO 2026-05-01 05:56:09,966 autoreload 19052 17396 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:56:10,698 autoreload 27220 4796 Watching for file changes with StatReloader
+INFO 2026-05-01 05:57:00,013 autoreload 27220 4796 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 05:57:00,613 autoreload 20696 4408 Watching for file changes with StatReloader
+INFO 2026-05-01 06:05:44,462 autoreload 20696 4408 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 06:05:45,205 autoreload 13740 5024 Watching for file changes with StatReloader
+INFO 2026-05-01 06:05:53,511 autoreload 13740 5024 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 06:05:54,690 autoreload 26440 3088 Watching for file changes with StatReloader
+INFO 2026-05-01 10:31:33,916 autoreload 27028 1644 Watching for file changes with StatReloader
+INFO 2026-05-01 10:33:06,148 autoreload 27028 1644 C:\Users\HP\multi_tenant_saas\accounts\serializers.py changed, reloading.
+INFO 2026-05-01 10:33:07,399 autoreload 4212 23520 Watching for file changes with StatReloader
+INFO 2026-05-01 10:33:27,093 autoreload 6600 11196 Watching for file changes with StatReloader
+INFO 2026-05-01 10:41:46,326 autoreload 1076 27664 Watching for file changes with StatReloader
+INFO 2026-05-01 10:44:03,405 autoreload 1076 27664 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 10:44:04,984 autoreload 21952 3520 Watching for file changes with StatReloader
+INFO 2026-05-01 10:44:53,448 autoreload 21952 3520 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 10:44:54,513 autoreload 19532 24324 Watching for file changes with StatReloader
+INFO 2026-05-01 10:47:42,987 autoreload 19532 24324 C:\Users\HP\multi_tenant_saas\organizations\views.py changed, reloading.
+INFO 2026-05-01 10:47:44,359 autoreload 14436 25868 Watching for file changes with StatReloader
+INFO 2026-05-01 10:56:22,562 log 14436 12916 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 10:56:25,030 log 14436 2280 "POST /api/projects/ HTTP/1.1" 500 153541
+INFO 2026-05-01 10:56:28,757 log 14436 2276 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 10:56:30,986 log 14436 12228 "GET /api/organizations/ HTTP/1.1" 500 129741
+ERROR 2026-05-01 10:56:33,272 log 14436 21828 "POST /api/projects/ HTTP/1.1" 500 153408
+INFO 2026-05-01 11:00:17,669 log 14436 16804 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 11:00:19,870 log 14436 11924 "POST /api/projects/ HTTP/1.1" 500 153533
+INFO 2026-05-01 11:00:23,409 log 14436 8064 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 11:00:25,507 log 14436 25252 "GET /api/organizations/ HTTP/1.1" 500 129741
+ERROR 2026-05-01 11:00:27,760 log 14436 17804 "POST /api/projects/ HTTP/1.1" 500 153392
+INFO 2026-05-01 11:00:44,346 log 14436 12640 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 11:00:46,560 log 14436 18916 "POST /api/projects/ HTTP/1.1" 500 153533
+INFO 2026-05-01 11:00:50,072 log 14436 22180 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 11:00:52,210 log 14436 26644 "GET /api/organizations/ HTTP/1.1" 500 129741
+ERROR 2026-05-01 11:00:54,391 log 14436 9464 "POST /api/projects/ HTTP/1.1" 500 153400
+INFO 2026-05-01 11:03:50,462 log 14436 13392 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 11:03:52,724 log 14436 7480 "GET /api/organizations/ HTTP/1.1" 500 129741
+ERROR 2026-05-01 11:03:55,015 log 14436 15224 "POST /api/projects/ HTTP/1.1" 500 153400
+INFO 2026-05-01 11:06:18,872 autoreload 6564 12560 Watching for file changes with StatReloader
+INFO 2026-05-01 11:07:28,112 log 6564 5480 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 11:07:30,397 log 6564 1952 "POST /api/projects/ HTTP/1.1" 500 153533
+INFO 2026-05-01 11:09:00,399 log 6564 6364 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-01 11:09:02,532 log 6564 7140 "POST /api/projects/ HTTP/1.1" 201 288
+INFO 2026-05-01 11:09:40,268 log 6564 8060 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-01 11:09:42,377 log 6564 17544 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-01 11:09:44,511 log 6564 4968 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-01 11:10:48,189 log 6564 4700 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-01 11:10:50,287 log 6564 20640 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-01 11:10:52,520 log 6564 23096 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-01 11:22:16,507 autoreload 6564 12560 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 11:22:17,765 autoreload 26400 17052 Watching for file changes with StatReloader
+INFO 2026-05-01 11:22:35,494 log 26400 21944 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-01 11:22:37,604 log 26400 4408 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-01 11:22:39,751 log 26400 17724 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-01 12:24:15,185 autoreload 26400 17052 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 12:24:15,962 autoreload 20292 11564 Watching for file changes with StatReloader
+INFO 2026-05-01 12:24:19,098 autoreload 20292 11564 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 12:24:19,875 autoreload 28392 18392 Watching for file changes with StatReloader
+INFO 2026-05-01 12:37:43,656 autoreload 28392 18392 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 12:37:44,475 autoreload 14960 17776 Watching for file changes with StatReloader
+INFO 2026-05-01 12:53:41,656 autoreload 14960 17776 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 12:53:42,385 autoreload 20172 7332 Watching for file changes with StatReloader
+INFO 2026-05-01 12:55:22,171 autoreload 20172 7332 C:\Users\HP\multi_tenant_saas\organizations\middleware.py changed, reloading.
+INFO 2026-05-01 12:55:22,969 autoreload 22776 27364 Watching for file changes with StatReloader
+INFO 2026-05-01 13:01:22,880 autoreload 22776 27364 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 13:01:23,658 autoreload 11796 4580 Watching for file changes with StatReloader
+INFO 2026-05-01 13:27:18,848 log 11796 23296 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 13:27:21,011 log 11796 10504 "GET /api/organizations/ HTTP/1.1" 500 129768
+ERROR 2026-05-01 13:27:23,133 log 11796 11868 "POST /api/projects/ HTTP/1.1" 500 153435
+INFO 2026-05-01 13:28:10,660 autoreload 11796 4580 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-01 13:28:11,493 autoreload 9020 3380 Watching for file changes with StatReloader
+INFO 2026-05-01 13:29:56,514 log 9020 8996 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 13:29:58,713 log 9020 14360 "GET /api/organizations/ HTTP/1.1" 500 129768
+ERROR 2026-05-01 13:30:00,817 log 9020 22908 "POST /api/projects/ HTTP/1.1" 500 153435
+INFO 2026-05-01 13:31:30,744 log 9020 12268 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-01 13:31:32,835 log 9020 9008 "GET /api/organizations/ HTTP/1.1" 500 129768
+ERROR 2026-05-01 13:31:34,950 log 9020 21784 "POST /api/projects/ HTTP/1.1" 500 153443
+INFO 2026-05-02 05:59:32,604 autoreload 12340 21460 Watching for file changes with StatReloader
+INFO 2026-05-02 08:29:57,209 autoreload 12340 21460 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 08:29:58,677 autoreload 23764 14844 Watching for file changes with StatReloader
+INFO 2026-05-02 08:40:28,958 autoreload 23764 14844 C:\Users\HP\multi_tenant_saas\venv\Lib\site-packages\django\conf\global_settings.py changed, reloading.
+INFO 2026-05-02 08:54:29,880 autoreload 25900 21460 Watching for file changes with StatReloader
+WARNING 2026-05-02 08:54:45,917 log 25900 3024 "POST /api/auth/login/ HTTP/1.1" 401 31
+INFO 2026-05-02 09:01:03,660 autoreload 15720 23536 Watching for file changes with StatReloader
+INFO 2026-05-02 09:01:52,694 log 25900 8832 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 09:01:54,828 log 25900 19328 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 09:01:57,073 log 25900 24732 "POST /api/projects/ HTTP/1.1" 500 153504
+INFO 2026-05-02 09:05:31,400 log 25900 8652 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:05:33,524 log 25900 16936 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:05:35,668 log 25900 11484 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:08:38,504 log 25900 28344 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:08:40,603 log 25900 22100 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:08:42,816 log 25900 27356 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:12:06,760 log 25900 4648 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:12:08,814 log 25900 10516 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:12:10,893 log 25900 16060 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:22:23,887 log 25900 20756 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:22:25,973 log 25900 23700 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:22:28,050 log 25900 16368 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:23:10,960 log 25900 24840 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:23:13,176 log 25900 25928 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:23:15,267 log 25900 25044 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:23:28,386 log 25900 27748 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:23:30,459 log 25900 10380 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:23:32,556 log 25900 21884 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:24:10,582 log 25900 16568 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:24:12,673 log 25900 13404 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:24:14,746 log 25900 6056 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:24:43,558 log 25900 16756 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:24:45,642 log 25900 2516 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:24:47,731 log 25900 18240 "POST /api/projects/ HTTP/1.1" 201 292
+INFO 2026-05-02 09:34:07,741 log 25900 23968 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:34:09,799 log 25900 12340 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:34:11,880 log 25900 13712 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:36:20,785 log 25900 8384 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:36:22,844 log 25900 16660 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:36:24,905 log 25900 22440 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:44:50,014 log 25900 13620 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:44:52,074 log 25900 6636 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:44:54,167 log 25900 23700 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:45:05,037 log 25900 17564 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:45:07,105 log 25900 1336 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:45:09,193 log 25900 24232 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:51:23,248 log 25900 25616 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:51:25,308 log 25900 5352 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:51:27,389 log 25900 9460 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:51:38,212 log 25900 13740 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:51:40,275 log 25900 21988 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:51:42,479 log 25900 28640 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:53:10,412 log 25900 5912 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:53:12,471 log 25900 27400 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:53:14,560 log 25900 1924 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:53:37,360 log 25900 3576 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:53:39,415 log 25900 24032 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:53:41,494 log 25900 12464 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:56:01,668 log 25900 24624 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:56:03,726 log 25900 17132 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:56:05,808 log 25900 17664 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:56:21,978 log 25900 7400 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:56:24,038 log 25900 3536 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:56:26,101 log 25900 2156 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:56:59,415 log 25900 25676 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:57:01,473 log 25900 7120 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:57:03,540 log 25900 13684 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 09:58:51,646 log 25900 7480 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 09:58:53,722 log 25900 16428 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 09:58:55,923 log 25900 24952 "POST /api/projects/ HTTP/1.1" 201 293
+WARNING 2026-05-02 10:08:20,072 log 25900 7724 "POST /api/auth/login/ HTTP/1.1" 401 31
+INFO 2026-05-02 10:09:46,223 log 25900 26440 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 10:09:48,297 log 25900 18532 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 10:09:50,435 log 25900 21144 "POST /api/projects/ HTTP/1.1" 500 153512
+INFO 2026-05-02 10:10:21,674 log 25900 9868 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 10:10:23,741 log 25900 11456 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 10:10:25,857 log 25900 25568 "POST /api/projects/ HTTP/1.1" 500 153520
+INFO 2026-05-02 10:15:46,280 autoreload 25900 21460 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 10:15:47,191 autoreload 14228 13240 Watching for file changes with StatReloader
+INFO 2026-05-02 10:16:04,984 log 14228 28328 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 10:16:07,092 log 14228 11960 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 10:16:09,225 log 14228 17848 "POST /api/projects/ HTTP/1.1" 500 153512
+INFO 2026-05-02 10:19:15,332 autoreload 14228 13240 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 10:19:16,136 autoreload 18232 27056 Watching for file changes with StatReloader
+INFO 2026-05-02 10:21:19,528 log 18232 13796 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 10:21:21,747 log 18232 5852 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 10:21:24,014 log 18232 22784 "POST /api/projects/ HTTP/1.1" 500 153520
+INFO 2026-05-02 10:22:04,799 log 18232 13880 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 10:22:06,950 log 18232 636 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 10:22:09,292 log 18232 11032 "POST /api/projects/ HTTP/1.1" 500 153512
+INFO 2026-05-02 11:07:05,863 autoreload 18232 27056 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 11:07:07,535 autoreload 27032 8708 Watching for file changes with StatReloader
+INFO 2026-05-02 11:07:24,282 log 27032 27476 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 11:07:26,502 log 27032 27380 "GET /api/organizations/ HTTP/1.1" 500 129853
+ERROR 2026-05-02 11:07:28,911 log 27032 4164 "POST /api/projects/ HTTP/1.1" 500 153512
+INFO 2026-05-02 11:08:20,876 autoreload 27032 8708 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 11:08:22,230 autoreload 24100 13824 Watching for file changes with StatReloader
+INFO 2026-05-02 11:11:08,379 autoreload 24100 13824 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 11:11:09,584 autoreload 28128 15624 Watching for file changes with StatReloader
+INFO 2026-05-02 11:11:44,082 log 28128 18072 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 11:11:46,383 log 28128 22968 "GET /api/organizations/ HTTP/1.1" 500 129778
+ERROR 2026-05-02 11:11:48,671 log 28128 27004 "POST /api/projects/ HTTP/1.1" 500 153445
+INFO 2026-05-02 11:12:31,312 autoreload 21244 15292 Watching for file changes with StatReloader
+INFO 2026-05-02 11:12:50,941 log 21244 25328 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 11:12:53,159 log 21244 27208 "GET /api/organizations/ HTTP/1.1" 500 129778
+ERROR 2026-05-02 11:12:55,436 log 21244 19184 "POST /api/projects/ HTTP/1.1" 500 153445
+INFO 2026-05-02 11:18:01,820 autoreload 17636 26640 Watching for file changes with StatReloader
+INFO 2026-05-02 11:18:14,232 autoreload 20932 20592 Watching for file changes with StatReloader
+INFO 2026-05-02 11:18:30,803 log 20932 4348 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 11:18:32,960 log 20932 24228 "POST /api/projects/ HTTP/1.1" 201 288
+INFO 2026-05-02 11:20:25,529 log 20932 13716 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 11:20:27,628 log 20932 2292 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 11:20:29,764 log 20932 10400 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 11:26:32,058 autoreload 20932 20592 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 11:26:33,244 autoreload 13652 21928 Watching for file changes with StatReloader
+INFO 2026-05-02 11:26:47,972 log 13652 25568 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-02 11:26:50,186 log 13652 24504 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-02 11:26:52,325 log 13652 9260 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-02 11:45:27,586 log 13652 4056 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 11:45:29,742 log 13652 21784 "GET /api/organizations/ HTTP/1.1" 500 129778
+ERROR 2026-05-02 11:45:32,008 log 13652 22128 "POST /api/projects/ HTTP/1.1" 500 153445
+INFO 2026-05-02 12:47:06,883 autoreload 13652 21928 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 12:47:07,932 autoreload 28036 12756 Watching for file changes with StatReloader
+INFO 2026-05-02 12:47:32,902 autoreload 28036 12756 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-02 12:47:34,423 autoreload 20312 20296 Watching for file changes with StatReloader
+INFO 2026-05-02 12:57:42,439 log 20312 20640 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-02 12:57:44,675 log 20312 24140 "GET /api/organizations/ HTTP/1.1" 500 129778
+ERROR 2026-05-02 12:57:46,943 log 20312 15140 "POST /api/projects/ HTTP/1.1" 500 153445
+INFO 2026-05-02 13:14:30,372 autoreload 20312 20296 C:\Users\HP\multi_tenant_saas\accounts\migrations\__init__.py changed, reloading.
+INFO 2026-05-02 13:14:31,861 autoreload 16224 13340 Watching for file changes with StatReloader
+INFO 2026-05-03 04:46:48,301 autoreload 6056 26536 Watching for file changes with StatReloader
+INFO 2026-05-03 05:27:32,244 autoreload 17464 6260 Watching for file changes with StatReloader
+INFO 2026-05-03 05:46:21,235 autoreload 17464 6260 C:\Users\HP\multi_tenant_saas\organizations\migrations\0001_initial.py changed, reloading.
+INFO 2026-05-03 05:46:22,023 autoreload 15212 18448 Watching for file changes with StatReloader
+WARNING 2026-05-03 05:53:22,955 log 15212 23040 "POST /api/auth/login/ HTTP/1.1" 401 31
+INFO 2026-05-03 05:54:30,032 log 15212 20132 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-03 05:54:32,128 log 15212 27800 "GET /api/organizations/ HTTP/1.1" 500 129777
+ERROR 2026-05-03 05:54:34,278 log 15212 21080 "POST /api/projects/ HTTP/1.1" 500 152509
+INFO 2026-05-03 06:02:11,020 autoreload 15212 18448 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 06:02:11,821 autoreload 23896 24676 Watching for file changes with StatReloader
+INFO 2026-05-03 06:02:29,113 autoreload 23896 24676 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 06:02:29,872 autoreload 20752 19988 Watching for file changes with StatReloader
+INFO 2026-05-03 06:02:54,679 log 20752 28392 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-03 06:02:56,776 log 20752 12036 "GET /api/organizations/ HTTP/1.1" 500 129777
+ERROR 2026-05-03 06:02:58,933 log 20752 12872 "POST /api/projects/ HTTP/1.1" 500 152501
+INFO 2026-05-03 06:03:59,833 log 20752 23048 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-03 06:04:01,943 log 20752 1276 "GET /api/organizations/ HTTP/1.1" 500 129777
+ERROR 2026-05-03 06:04:04,101 log 20752 27068 "POST /api/projects/ HTTP/1.1" 500 152485
+INFO 2026-05-03 06:04:55,116 log 20752 5824 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-03 06:04:57,208 log 20752 13956 "GET /api/organizations/ HTTP/1.1" 500 129777
+ERROR 2026-05-03 06:04:59,325 log 20752 4260 "POST /api/projects/ HTTP/1.1" 500 152501
+INFO 2026-05-03 06:06:32,377 autoreload 20752 19988 C:\Users\HP\multi_tenant_saas\organizations\models.py changed, reloading.
+INFO 2026-05-03 06:06:33,248 autoreload 22864 20864 Watching for file changes with StatReloader
+INFO 2026-05-03 06:06:35,176 autoreload 22864 20864 C:\Users\HP\multi_tenant_saas\organizations\models.py changed, reloading.
+INFO 2026-05-03 06:06:35,686 autoreload 24836 13752 Watching for file changes with StatReloader
+INFO 2026-05-03 06:07:14,672 autoreload 24836 13752 C:\Users\HP\multi_tenant_saas\organizations\models.py changed, reloading.
+INFO 2026-05-03 06:07:15,342 autoreload 23468 8020 Watching for file changes with StatReloader
+INFO 2026-05-03 06:07:59,213 log 23468 13600 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-03 06:08:01,307 log 23468 12108 "GET /api/organizations/ HTTP/1.1" 500 129777
+ERROR 2026-05-03 06:08:03,468 log 23468 19964 "POST /api/projects/ HTTP/1.1" 500 152493
+INFO 2026-05-03 06:08:46,318 autoreload 23468 8020 C:\Users\HP\multi_tenant_saas\organizations\models.py changed, reloading.
+INFO 2026-05-03 06:08:47,080 autoreload 19356 25656 Watching for file changes with StatReloader
+INFO 2026-05-03 06:11:05,296 autoreload 19356 25656 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 06:11:06,113 autoreload 2732 28164 Watching for file changes with StatReloader
+INFO 2026-05-03 06:11:12,765 autoreload 2732 28164 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 06:11:13,578 autoreload 7320 14856 Watching for file changes with StatReloader
+INFO 2026-05-03 06:11:35,395 autoreload 15212 3496 Watching for file changes with StatReloader
+INFO 2026-05-03 06:12:43,941 log 15212 17568 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-03 06:12:46,092 log 15212 3936 "POST /api/projects/ HTTP/1.1" 500 152634
+INFO 2026-05-03 06:22:05,629 log 15212 22120 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 06:22:07,717 log 15212 15008 "POST /api/projects/ HTTP/1.1" 500 152674
+WARNING 2026-05-03 06:23:14,399 log 15212 20628 "POST /api/projects/ HTTP/1.1" 401 172
+INFO 2026-05-03 06:24:45,646 autoreload 15212 3496 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:24:46,494 autoreload 12320 15992 Watching for file changes with StatReloader
+INFO 2026-05-03 06:25:44,450 log 12320 21108 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 06:26:18,394 log 12320 25264 "POST /api/projects/ HTTP/1.1" 500 152278
+INFO 2026-05-03 06:26:38,347 log 12320 25544 "GET /api/projects/ HTTP/1.1" 200 567
+INFO 2026-05-03 06:28:51,636 autoreload 12320 15992 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:28:52,495 autoreload 19192 7688 Watching for file changes with StatReloader
+ERROR 2026-05-03 06:29:02,182 log 19192 11856 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 06:29:55,078 autoreload 19192 7688 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:29:55,796 autoreload 26960 19412 Watching for file changes with StatReloader
+ERROR 2026-05-03 06:30:30,110 log 26960 15776 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 06:33:01,223 autoreload 26960 19412 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:33:02,035 autoreload 21964 6012 Watching for file changes with StatReloader
+INFO 2026-05-03 06:33:29,884 autoreload 21964 6012 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 06:33:30,609 autoreload 25584 10348 Watching for file changes with StatReloader
+INFO 2026-05-03 06:34:08,415 log 25584 7100 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-03 06:34:40,913 log 25584 27384 "GET /api/projects/debug/ HTTP/1.1" 200 144
+INFO 2026-05-03 06:35:51,567 autoreload 25584 10348 C:\Users\HP\multi_tenant_saas\organizations\middleware.py changed, reloading.
+INFO 2026-05-03 06:35:52,386 autoreload 21252 28392 Watching for file changes with StatReloader
+INFO 2026-05-03 06:37:07,512 autoreload 21252 28392 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:37:08,326 autoreload 5356 25288 Watching for file changes with StatReloader
+ERROR 2026-05-03 06:37:17,910 log 5356 25172 "POST /api/projects/ HTTP/1.1" 500 152278
+INFO 2026-05-03 06:39:53,505 autoreload 5356 25288 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:39:54,312 autoreload 15564 27652 Watching for file changes with StatReloader
+ERROR 2026-05-03 06:40:31,844 log 15564 15580 "POST /api/projects/ HTTP/1.1" 500 152278
+ERROR 2026-05-03 06:41:02,268 log 15564 24776 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 06:42:04,678 autoreload 15564 27652 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 06:42:05,439 autoreload 12408 24560 Watching for file changes with StatReloader
+INFO 2026-05-03 06:42:32,060 autoreload 12408 24560 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 06:42:32,889 autoreload 24088 21056 Watching for file changes with StatReloader
+INFO 2026-05-03 06:59:40,524 autoreload 11468 26184 Watching for file changes with StatReloader
+INFO 2026-05-03 07:00:01,853 autoreload 14456 15776 Watching for file changes with StatReloader
+INFO 2026-05-03 07:00:55,687 log 14456 8900 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 07:01:15,516 log 14456 27608 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 07:03:18,207 autoreload 21360 25700 Watching for file changes with StatReloader
+INFO 2026-05-03 07:04:18,299 autoreload 21360 25700 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 07:04:19,456 autoreload 20728 24164 Watching for file changes with StatReloader
+INFO 2026-05-03 07:04:34,167 autoreload 2376 19004 Watching for file changes with StatReloader
+INFO 2026-05-03 07:04:42,720 views 2376 27212 User: admin@gmail.com
+INFO 2026-05-03 07:04:42,721 views 2376 27212 Organization ID: 1
+INFO 2026-05-03 07:04:42,721 views 2376 27212 Request data: {'name': 'Test', 'description': 'Test'}
+ERROR 2026-05-03 07:04:42,828 log 2376 27212 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 07:06:07,128 autoreload 2376 19004 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 07:06:08,486 autoreload 26588 22076 Watching for file changes with StatReloader
+INFO 2026-05-03 07:06:38,124 autoreload 22480 11500 Watching for file changes with StatReloader
+ERROR 2026-05-03 07:06:51,308 log 22480 18276 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 07:07:42,690 autoreload 22480 11500 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 07:07:43,744 autoreload 21964 8412 Watching for file changes with StatReloader
+INFO 2026-05-03 07:07:58,969 autoreload 10404 25520 Watching for file changes with StatReloader
+ERROR 2026-05-03 07:08:10,174 log 10404 18416 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 07:08:57,639 autoreload 10404 25520 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 07:08:59,035 autoreload 10944 2376 Watching for file changes with StatReloader
+INFO 2026-05-03 07:09:19,727 autoreload 27156 7792 Watching for file changes with StatReloader
+ERROR 2026-05-03 07:09:26,150 log 27156 20912 "POST /api/projects/ HTTP/1.1" 500 152262
+ERROR 2026-05-03 07:09:42,155 log 27156 13864 "POST /api/projects/ HTTP/1.1" 500 152270
+INFO 2026-05-03 08:07:05,959 autoreload 27156 7792 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 08:07:07,592 autoreload 20428 20936 Watching for file changes with StatReloader
+INFO 2026-05-03 08:07:31,322 autoreload 3408 16736 Watching for file changes with StatReloader
+WARNING 2026-05-03 08:07:41,960 log 3408 25688 "POST /api/projects/ HTTP/1.1" 401 172
+INFO 2026-05-03 08:09:54,834 log 3408 2624 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 08:10:24,966 log 3408 6404 "POST /api/projects/ HTTP/1.1" 500 152278
+INFO 2026-05-03 08:11:56,595 autoreload 3408 16736 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 08:11:57,672 autoreload 21820 12040 Watching for file changes with StatReloader
+INFO 2026-05-03 08:13:38,865 autoreload 19008 14128 Watching for file changes with StatReloader
+INFO 2026-05-03 08:13:52,144 log 19008 14832 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 08:14:12,182 log 19008 8676 "POST /api/projects/ HTTP/1.1" 500 152145
+INFO 2026-05-03 08:18:25,733 autoreload 19008 14128 C:\Users\HP\multi_tenant_saas\projects\serializers.py changed, reloading.
+INFO 2026-05-03 08:18:26,788 autoreload 8312 22480 Watching for file changes with StatReloader
+INFO 2026-05-03 08:19:07,751 autoreload 8312 22480 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 08:19:08,996 autoreload 27592 14928 Watching for file changes with StatReloader
+INFO 2026-05-03 08:19:52,438 log 27592 17460 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 08:20:14,282 log 27592 26648 "POST /api/projects/ HTTP/1.1" 500 152145
+INFO 2026-05-03 08:20:46,460 autoreload 4108 3188 Watching for file changes with StatReloader
+ERROR 2026-05-03 08:20:57,302 log 4108 17964 "POST /api/projects/ HTTP/1.1" 500 152145
+INFO 2026-05-03 08:22:26,483 autoreload 4108 3188 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 08:22:27,642 autoreload 5820 21476 Watching for file changes with StatReloader
+INFO 2026-05-03 08:22:54,141 autoreload 5820 21476 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 08:22:55,064 autoreload 21376 12372 Watching for file changes with StatReloader
+INFO 2026-05-03 08:23:23,953 autoreload 8256 24064 Watching for file changes with StatReloader
+ERROR 2026-05-03 08:23:33,843 log 8256 18792 "POST /api/projects/raw/ HTTP/1.1" 500 152217
+INFO 2026-05-03 08:24:14,818 autoreload 8256 24064 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 08:24:15,884 autoreload 12324 14440 Watching for file changes with StatReloader
+INFO 2026-05-03 08:24:36,203 autoreload 10496 20152 Watching for file changes with StatReloader
+ERROR 2026-05-03 08:24:43,080 log 10496 28460 "POST /api/projects/raw/ HTTP/1.1" 500 152217
+INFO 2026-05-03 08:25:57,004 autoreload 16048 9600 Watching for file changes with StatReloader
+ERROR 2026-05-03 08:26:10,135 log 16048 3360 "POST /api/projects/raw/ HTTP/1.1" 500 152209
+INFO 2026-05-03 08:27:25,215 autoreload 16048 9600 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 08:27:26,298 autoreload 15304 7240 Watching for file changes with StatReloader
+INFO 2026-05-03 08:27:57,865 autoreload 26400 18632 Watching for file changes with StatReloader
+WARNING 2026-05-03 08:28:06,254 log 26400 22636 "POST /api/projects/raw/ HTTP/1.1" 401 172
+INFO 2026-05-03 08:28:40,296 log 26400 12548 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 08:29:03,317 log 26400 18308 "POST /api/projects/raw/ HTTP/1.1" 500 152203
+INFO 2026-05-03 10:51:29,515 autoreload 26400 18632 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 10:51:30,557 autoreload 25772 28464 Watching for file changes with StatReloader
+INFO 2026-05-03 10:51:56,637 autoreload 25772 28464 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 10:51:58,017 autoreload 14500 4788 Watching for file changes with StatReloader
+INFO 2026-05-03 10:52:31,548 log 14500 2264 "GET /api/projects/ping/ HTTP/1.1" 200 48
+INFO 2026-05-03 10:54:14,749 autoreload 19668 11140 Watching for file changes with StatReloader
+INFO 2026-05-03 10:56:20,202 autoreload 19668 11140 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 10:56:21,269 autoreload 17992 15392 Watching for file changes with StatReloader
+INFO 2026-05-03 10:56:44,096 autoreload 24480 26676 Watching for file changes with StatReloader
+INFO 2026-05-03 10:57:35,300 log 24480 19560 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-03 10:58:00,323 log 24480 24232 "POST /api/projects/raw/ HTTP/1.1" 500 152213
+INFO 2026-05-03 10:59:59,876 autoreload 24480 26676 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 11:00:00,784 autoreload 27384 15208 Watching for file changes with StatReloader
+INFO 2026-05-03 11:01:21,537 autoreload 27384 15208 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 11:01:22,691 autoreload 23936 21308 Watching for file changes with StatReloader
+INFO 2026-05-03 11:01:40,663 autoreload 23936 21308 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 11:01:41,514 autoreload 6012 22920 Watching for file changes with StatReloader
+INFO 2026-05-03 11:01:59,540 autoreload 6012 22920 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 11:02:01,033 autoreload 8732 4144 Watching for file changes with StatReloader
+INFO 2026-05-03 11:02:13,056 log 8732 17348 "POST /api/projects/raw2/ HTTP/1.1" 201 53
+INFO 2026-05-03 11:03:27,916 autoreload 8732 4144 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 11:03:28,842 autoreload 6028 24712 Watching for file changes with StatReloader
+INFO 2026-05-03 11:03:51,470 autoreload 6028 24712 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 11:03:52,410 autoreload 16852 12388 Watching for file changes with StatReloader
+INFO 2026-05-03 11:04:32,534 autoreload 28436 4960 Watching for file changes with StatReloader
+INFO 2026-05-03 11:05:09,543 log 28436 18216 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-03 11:05:31,504 log 28436 17372 "POST /api/projects/create/ HTTP/1.1" 302 0
+WARNING 2026-05-03 11:06:05,339 log 28436 4676 "GET /api/projects/create/ HTTP/1.1" 405 0
+WARNING 2026-05-03 11:08:19,182 log 28436 17484 "GET /api/projects/create/ HTTP/1.1" 405 0
+INFO 2026-05-03 11:09:52,786 log 28436 22580 "POST /api/projects/create/ HTTP/1.1" 302 0
+INFO 2026-05-03 11:10:38,488 autoreload 28436 4960 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 11:10:39,526 autoreload 19688 1560 Watching for file changes with StatReloader
+INFO 2026-05-03 11:11:11,149 autoreload 12720 27092 Watching for file changes with StatReloader
+INFO 2026-05-03 11:11:20,033 log 12720 25756 "POST /api/projects/create/ HTTP/1.1" 302 0
+INFO 2026-05-03 11:14:46,521 autoreload 12720 27092 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 11:14:47,566 autoreload 20488 19212 Watching for file changes with StatReloader
+INFO 2026-05-03 11:15:27,033 autoreload 20488 19212 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-03 11:15:27,935 autoreload 4120 10344 Watching for file changes with StatReloader
+INFO 2026-05-03 11:16:13,381 autoreload 4120 10344 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-03 11:16:14,358 autoreload 19328 16308 Watching for file changes with StatReloader
+INFO 2026-05-03 11:17:22,074 autoreload 11588 28040 Watching for file changes with StatReloader
+ERROR 2026-05-03 11:17:35,548 log 11588 19952 "POST /api/projects/create/ HTTP/1.1" 500 152291
+INFO 2026-05-03 11:19:16,514 autoreload 11588 28040 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 12:52:42,025 autoreload 16048 18724 Watching for file changes with StatReloader
+INFO 2026-05-03 12:52:59,043 log 16048 22836 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-03 12:53:01,147 log 16048 26316 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-03 12:53:03,280 log 16048 10404 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-03 12:54:19,813 log 16048 4468 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-03 12:54:42,799 log 16048 14000 "POST /api/projects/ HTTP/1.1" 201 277
+INFO 2026-05-03 13:23:38,054 autoreload 16048 18724 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 13:23:39,598 autoreload 5636 27812 Watching for file changes with StatReloader
+INFO 2026-05-03 13:24:44,370 autoreload 5636 27812 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-03 13:24:45,576 autoreload 9420 12152 Watching for file changes with StatReloader
+INFO 2026-05-03 13:25:15,527 log 9420 27680 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-03 13:25:17,631 log 9420 9408 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-03 13:25:19,759 log 9420 3660 "POST /api/projects/ HTTP/1.1" 201 293
+INFO 2026-05-04 05:44:19,155 autoreload 13216 13852 Watching for file changes with StatReloader
+INFO 2026-05-04 06:28:32,149 autoreload 6748 12448 Watching for file changes with StatReloader
+INFO 2026-05-04 06:29:20,162 autoreload 6748 12448 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-04 06:29:21,134 autoreload 23780 15364 Watching for file changes with StatReloader
+INFO 2026-05-04 06:30:01,376 autoreload 5184 23536 Watching for file changes with StatReloader
+INFO 2026-05-04 06:31:02,217 autoreload 18344 23092 Watching for file changes with StatReloader
+INFO 2026-05-04 06:54:33,024 autoreload 18344 23092 C:\Users\HP\multi_tenant_saas\organizations\models.py changed, reloading.
+INFO 2026-05-04 06:54:33,999 autoreload 27864 21480 Watching for file changes with StatReloader
+INFO 2026-05-04 12:44:25,114 autoreload 10444 18664 Watching for file changes with StatReloader
+INFO 2026-05-04 12:46:19,226 autoreload 10444 18664 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-04 12:46:20,300 autoreload 12208 10848 Watching for file changes with StatReloader
+INFO 2026-05-04 12:46:35,757 autoreload 12208 10848 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-04 12:46:36,900 autoreload 9564 4144 Watching for file changes with StatReloader
+INFO 2026-05-04 12:49:16,300 autoreload 4964 18672 Watching for file changes with StatReloader
+INFO 2026-05-04 12:49:45,823 log 4964 12064 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-04 12:49:47,989 log 4964 11640 "GET /api/organizations/ HTTP/1.1" 500 129777
+ERROR 2026-05-04 12:49:50,360 log 4964 19160 "POST /api/projects/ HTTP/1.1" 500 152509
+INFO 2026-05-04 13:19:04,903 autoreload 27136 22260 Watching for file changes with StatReloader
+INFO 2026-05-04 13:20:11,583 log 4964 5140 "POST /api/auth/login/ HTTP/1.1" 200 615
+ERROR 2026-05-04 13:20:54,722 log 4964 25364 "POST /api/projects/ HTTP/1.1" 500 152153
+INFO 2026-05-04 13:22:23,892 log 4964 6304 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-04 13:23:01,499 log 4964 14324 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 13:23:19,938 log 4964 19872 "POST /api/projects/ HTTP/1.1" 500 152153
+ERROR 2026-05-04 13:23:56,233 log 4964 20820 "POST /api/projects/ HTTP/1.1" 500 152286
+INFO 2026-05-04 15:19:26,480 autoreload 27136 22260 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:19:26,593 autoreload 4964 18672 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:19:27,602 autoreload 1892 12020 Watching for file changes with StatReloader
+INFO 2026-05-04 15:19:27,929 autoreload 28056 3760 Watching for file changes with StatReloader
+INFO 2026-05-04 15:20:14,648 autoreload 1892 12020 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-04 15:20:14,758 autoreload 28056 3760 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-04 15:20:15,974 autoreload 20916 4344 Watching for file changes with StatReloader
+INFO 2026-05-04 15:20:16,051 autoreload 27744 22872 Watching for file changes with StatReloader
+WARNING 2026-05-04 15:20:23,533 log 20916 9800 "POST /api/projects/simple-create/ HTTP/1.1" 401 172
+INFO 2026-05-04 15:21:20,903 log 20916 7368 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 15:22:07,960 log 20916 26476 "POST /api/projects/simple-create/ HTTP/1.1" 500 152427
+INFO 2026-05-04 15:23:39,038 autoreload 20916 4344 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-04 15:23:39,733 autoreload 27744 22872 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-04 15:23:40,516 autoreload 11704 16484 Watching for file changes with StatReloader
+INFO 2026-05-04 15:23:41,066 autoreload 13516 9584 Watching for file changes with StatReloader
+INFO 2026-05-04 15:29:22,066 autoreload 11704 16484 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:29:22,683 autoreload 13516 9584 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:29:23,432 autoreload 4788 20048 Watching for file changes with StatReloader
+INFO 2026-05-04 15:29:23,769 autoreload 26824 17304 Watching for file changes with StatReloader
+INFO 2026-05-04 15:31:05,383 log 4788 14332 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 15:31:32,907 log 4788 26940 "POST /api/projects/simple-create/ HTTP/1.1" 500 152499
+INFO 2026-05-04 15:32:55,075 autoreload 4788 20048 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:32:55,087 autoreload 26824 17304 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:32:56,435 autoreload 17036 22588 Watching for file changes with StatReloader
+INFO 2026-05-04 15:32:56,435 autoreload 17368 24456 Watching for file changes with StatReloader
+INFO 2026-05-04 15:33:12,531 autoreload 17368 24456 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:33:12,566 autoreload 17036 22588 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 15:33:13,576 autoreload 4284 26992 Watching for file changes with StatReloader
+INFO 2026-05-04 15:33:13,577 autoreload 2016 21992 Watching for file changes with StatReloader
+INFO 2026-05-04 15:35:53,043 autoreload 22136 7420 Watching for file changes with StatReloader
+INFO 2026-05-04 15:37:54,701 autoreload 22136 7420 C:\Users\HP\multi_tenant_saas\projects\search_urls.py changed, reloading.
+INFO 2026-05-04 15:37:55,100 autoreload 4284 26992 C:\Users\HP\multi_tenant_saas\projects\search_urls.py changed, reloading.
+INFO 2026-05-04 15:37:55,725 autoreload 16264 7284 Watching for file changes with StatReloader
+INFO 2026-05-04 15:37:56,111 autoreload 12152 28380 Watching for file changes with StatReloader
+INFO 2026-05-04 15:38:23,662 autoreload 20876 16172 Watching for file changes with StatReloader
+INFO 2026-05-04 15:39:32,739 autoreload 12152 28380 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-05-04 15:39:32,819 autoreload 20876 16172 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-05-04 15:39:33,962 autoreload 12764 28488 Watching for file changes with StatReloader
+INFO 2026-05-04 15:39:33,997 autoreload 28440 10248 Watching for file changes with StatReloader
+INFO 2026-05-04 15:40:01,708 autoreload 25104 4980 Watching for file changes with StatReloader
+INFO 2026-05-04 15:47:10,233 autoreload 12764 28488 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-05-04 15:47:10,268 autoreload 25104 4980 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-05-04 15:47:11,566 autoreload 1864 27820 Watching for file changes with StatReloader
+INFO 2026-05-04 15:47:11,566 autoreload 17360 24072 Watching for file changes with StatReloader
+INFO 2026-05-04 15:47:27,540 autoreload 20468 15516 Watching for file changes with StatReloader
+INFO 2026-05-04 15:57:50,559 autoreload 17092 20736 Watching for file changes with StatReloader
+INFO 2026-05-04 15:59:32,169 autoreload 1864 27820 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-05-04 15:59:33,729 autoreload 3336 15168 Watching for file changes with StatReloader
+INFO 2026-05-04 16:04:45,676 autoreload 4292 4288 Watching for file changes with StatReloader
+INFO 2026-05-04 16:09:10,427 autoreload 18364 3252 Watching for file changes with StatReloader
+INFO 2026-05-04 16:11:19,949 autoreload 13920 2016 Watching for file changes with StatReloader
+INFO 2026-05-04 16:12:36,087 log 13920 9400 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 16:13:07,334 log 13920 21252 "POST /api/projects/simple-create/ HTTP/1.1" 500 152495
+ERROR 2026-05-04 16:22:14,986 log 13920 21260 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+ERROR 2026-05-04 16:22:46,676 log 13920 8864 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+INFO 2026-05-04 16:24:27,802 autoreload 13920 2016 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:24:29,114 autoreload 3064 10448 Watching for file changes with StatReloader
+ERROR 2026-05-04 16:25:03,838 log 3064 20700 "POST /api/projects/simple-create/ HTTP/1.1" 500 152495
+ERROR 2026-05-04 16:25:16,618 log 3064 16484 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+INFO 2026-05-04 16:26:39,055 autoreload 3064 10448 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:26:39,919 autoreload 9980 14244 Watching for file changes with StatReloader
+ERROR 2026-05-04 16:27:35,867 log 9980 2744 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+WARNING 2026-05-04 16:27:44,270 log 9980 18356 "POST /api/projects/simple-create/ HTTP/1.1" 401 172
+INFO 2026-05-04 16:28:30,474 log 9980 19064 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 16:29:17,215 log 9980 22740 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+INFO 2026-05-04 16:30:31,689 autoreload 9980 14244 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:30:32,763 autoreload 15908 12904 Watching for file changes with StatReloader
+ERROR 2026-05-04 16:31:02,131 log 15908 8640 "POST /api/projects/simple-create/ HTTP/1.1" 500 152487
+INFO 2026-05-04 16:38:12,557 autoreload 15908 12904 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:38:13,787 autoreload 12804 14832 Watching for file changes with StatReloader
+INFO 2026-05-04 16:45:11,513 log 12804 23388 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 16:45:34,487 log 12804 9160 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+ERROR 2026-05-04 16:45:44,740 log 12804 18192 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+ERROR 2026-05-04 16:45:54,807 log 12804 16192 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+INFO 2026-05-04 16:49:07,918 autoreload 12804 14832 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:49:08,861 autoreload 22488 17092 Watching for file changes with StatReloader
+INFO 2026-05-04 16:49:51,079 log 22488 13604 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 16:50:27,859 log 22488 5148 "POST /api/projects/simple-create/ HTTP/1.1" 500 152503
+INFO 2026-05-04 16:51:43,823 autoreload 22488 17092 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-04 16:51:44,929 autoreload 23700 14404 Watching for file changes with StatReloader
+INFO 2026-05-04 16:52:39,507 autoreload 9384 15252 Watching for file changes with StatReloader
+INFO 2026-05-04 16:53:36,765 autoreload 9384 15252 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-04 16:53:38,130 autoreload 5968 23716 Watching for file changes with StatReloader
+INFO 2026-05-04 16:54:12,381 autoreload 9168 10396 Watching for file changes with StatReloader
+INFO 2026-05-04 16:55:12,941 autoreload 9168 10396 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-04 16:55:13,871 autoreload 15836 16584 Watching for file changes with StatReloader
+INFO 2026-05-04 16:56:16,446 autoreload 15836 16584 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:56:17,286 autoreload 19112 5872 Watching for file changes with StatReloader
+INFO 2026-05-04 16:56:57,622 autoreload 19112 5872 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 16:56:58,895 autoreload 23956 5868 Watching for file changes with StatReloader
+INFO 2026-05-04 16:57:47,554 log 23956 13340 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 16:58:05,291 log 23956 15148 "POST /api/projects/simple-create/ HTTP/1.1" 500 152495
+INFO 2026-05-04 20:28:50,795 autoreload 23956 5868 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 20:28:51,754 autoreload 26392 7664 Watching for file changes with StatReloader
+INFO 2026-05-04 20:29:14,092 autoreload 26392 7664 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 20:29:15,196 autoreload 24252 5748 Watching for file changes with StatReloader
+INFO 2026-05-04 20:29:57,237 autoreload 19888 15928 Watching for file changes with StatReloader
+INFO 2026-05-04 20:31:26,796 autoreload 19888 15928 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 20:31:27,743 autoreload 20432 18316 Watching for file changes with StatReloader
+INFO 2026-05-04 20:36:54,855 autoreload 20432 18316 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 20:36:55,724 autoreload 14616 2588 Watching for file changes with StatReloader
+INFO 2026-05-04 20:42:36,816 autoreload 14616 2588 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 20:42:37,973 autoreload 9904 16216 Watching for file changes with StatReloader
+INFO 2026-05-04 20:50:37,631 autoreload 15388 7320 Watching for file changes with StatReloader
+INFO 2026-05-04 20:51:04,007 autoreload 15388 7320 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 20:51:05,204 autoreload 5512 3036 Watching for file changes with StatReloader
+INFO 2026-05-04 20:51:37,944 autoreload 25064 16160 Watching for file changes with StatReloader
+INFO 2026-05-04 20:52:53,315 autoreload 25064 16160 C:\Users\HP\multi_tenant_saas\projects\urls.py changed, reloading.
+INFO 2026-05-04 20:52:54,395 autoreload 13068 8976 Watching for file changes with StatReloader
+WARNING 2026-05-04 21:00:15,241 log 13068 23732 "POST /api/projects/ HTTP/1.1" 401 172
+INFO 2026-05-04 21:00:26,706 log 13068 15872 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 21:03:35,499 log 13068 1892 "POST /api/projects/ HTTP/1.1" 500 152209
+INFO 2026-05-04 21:23:12,236 autoreload 13068 8976 C:\Users\HP\multi_tenant_saas\projects\serializers.py changed, reloading.
+INFO 2026-05-04 21:23:13,058 autoreload 21716 16736 Watching for file changes with StatReloader
+INFO 2026-05-04 21:26:05,824 log 21716 19148 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 21:28:13,506 log 21716 26596 "POST /api/projects/ HTTP/1.1" 500 152217
+ERROR 2026-05-04 21:28:20,596 log 21716 19020 "POST /api/projects/ HTTP/1.1" 500 152217
+INFO 2026-05-04 21:30:20,956 autoreload 21716 16736 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 21:30:21,861 autoreload 17944 9120 Watching for file changes with StatReloader
+INFO 2026-05-04 21:32:10,130 log 17944 7892 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 21:33:11,545 log 17944 20504 "POST /api/projects/ HTTP/1.1" 500 152217
+INFO 2026-05-04 21:34:29,315 autoreload 17944 9120 C:\Users\HP\multi_tenant_saas\projects\views.py changed, reloading.
+INFO 2026-05-04 21:34:30,098 autoreload 10264 13800 Watching for file changes with StatReloader
+INFO 2026-05-04 21:38:10,323 autoreload 10264 13800 C:\Users\HP\multi_tenant_saas\projects\serializers.py changed, reloading.
+INFO 2026-05-04 21:38:11,145 autoreload 23936 25448 Watching for file changes with StatReloader
+INFO 2026-05-04 21:38:31,837 log 23936 8772 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 21:38:57,424 log 23936 16076 "POST /api/projects/ HTTP/1.1" 500 152217
+INFO 2026-05-04 21:41:28,042 autoreload 23936 25448 C:\Users\HP\multi_tenant_saas\projects\serializers.py changed, reloading.
+INFO 2026-05-04 21:41:28,855 autoreload 21944 20136 Watching for file changes with StatReloader
+INFO 2026-05-04 21:42:07,660 log 21944 6008 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 21:42:27,840 log 21944 13288 "POST /api/projects/ HTTP/1.1" 500 152217
+INFO 2026-05-04 21:46:41,904 autoreload 21944 20136 C:\Users\HP\multi_tenant_saas\projects\serializers.py changed, reloading.
+INFO 2026-05-04 21:46:42,672 autoreload 21280 18404 Watching for file changes with StatReloader
+INFO 2026-05-04 21:46:56,381 autoreload 21280 18404 C:\Users\HP\multi_tenant_saas\projects\serializers.py changed, reloading.
+INFO 2026-05-04 21:46:57,129 autoreload 15752 18628 Watching for file changes with StatReloader
+INFO 2026-05-04 21:47:43,137 log 15752 17736 "POST /api/auth/login/ HTTP/1.1" 200 611
+ERROR 2026-05-04 21:52:52,624 log 15752 21080 "POST /api/projects/ HTTP/1.1" 500 152217
+INFO 2026-05-04 21:57:51,793 autoreload 15752 18628 C:\Users\HP\multi_tenant_saas\core\settings.py changed, reloading.
+INFO 2026-05-04 22:32:11,254 autoreload 7636 25404 Watching for file changes with StatReloader
+ERROR 2026-05-04 22:32:40,368 log 7636 16564 "POST /api/auth/login/ HTTP/1.1" 500 181377
+ERROR 2026-05-04 22:33:29,239 log 7636 6652 "POST /api/auth/login/ HTTP/1.1" 500 181377
+ERROR 2026-05-04 22:35:09,017 log 7636 19800 "POST /api/auth/login/ HTTP/1.1" 500 219963
+INFO 2026-05-04 22:48:09,363 autoreload 16060 1164 Watching for file changes with StatReloader
+INFO 2026-05-04 22:48:28,714 log 16060 24088 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-04 22:48:51,053 log 16060 22344 "POST /api/projects/ HTTP/1.1" 201 239
+INFO 2026-05-04 22:49:28,071 log 16060 3396 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-04 22:49:30,176 log 16060 21112 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-04 22:49:32,298 log 16060 14468 "POST /api/projects/ HTTP/1.1" 201 259
+INFO 2026-05-04 22:52:53,363 autoreload 17188 27456 Watching for file changes with StatReloader
+INFO 2026-05-04 22:53:49,407 log 17188 16168 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-04 22:53:51,506 log 17188 14948 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-04 22:53:53,725 log 17188 11892 "POST /api/projects/ HTTP/1.1" 201 259
+INFO 2026-05-04 22:58:00,724 autoreload 17188 27456 C:\Users\HP\multi_tenant_saas\core\urls.py changed, reloading.
+INFO 2026-05-04 22:58:02,340 autoreload 12564 4776 Watching for file changes with StatReloader
+INFO 2026-05-04 22:58:26,226 log 12564 1964 "POST /api/auth/login/ HTTP/1.1" 200 611
+INFO 2026-05-04 22:58:28,438 log 12564 28272 "GET /api/organizations/ HTTP/1.1" 200 87
+INFO 2026-05-04 22:58:30,549 log 12564 14700 "POST /api/projects/ HTTP/1.1" 201 259
