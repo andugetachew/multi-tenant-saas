@@ -28,10 +28,18 @@ class InviteUserView(generics.CreateAPIView):
     serializer_class = OrganizationInvitationSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_serializer(self, *args, **kwargs):
+        # Remove organization from request data
+        if isinstance(kwargs.get("data"), dict):
+            data = kwargs["data"].copy()
+            data.pop("organization", None)
+            kwargs["data"] = data
+        return super().get_serializer(*args, **kwargs)
+
     def perform_create(self, serializer):
         token = secrets.token_urlsafe(32)
         serializer.save(
-            organization=self.request.organization,
+            organization=self.request.user.organization,
             invited_by=self.request.user,
             token=token,
         )

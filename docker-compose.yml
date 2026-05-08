@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:15
     environment:
-      POSTGRES_DB: multitenant_db
+      POSTGRES_DB: multi_tenant_saas
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres123
     ports:
@@ -15,17 +15,36 @@ services:
       timeout: 5s
       retries: 5
 
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   web:
     build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
     ports:
       - "8000:8000"
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
       - DEBUG=1
       - DJANGO_SETTINGS_MODULE=core.settings
-      - DATABASE_URL=postgres://postgres:postgres123@db:5432/multitenant_db
+      - DB_HOST=db
+      - DB_NAME=multi_tenant_saas
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres123
+    depends_on:
+      - db
+      - redis
 
 volumes:
   postgres_data:
+  redis_data:

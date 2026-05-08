@@ -1,24 +1,28 @@
-FROM python:3.11-slim
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
-    postgresql-client \
     libpq-dev \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
+
+
+RUN pip install --upgrade pip
+
 
 COPY requirements.txt .
 
-
 RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-
-
-ENV DJANGO_SETTINGS_MODULE=core.settings
-ENV DATABASE_URL=postgres://postgres:postgres123@db:5432/multitenant_db
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]

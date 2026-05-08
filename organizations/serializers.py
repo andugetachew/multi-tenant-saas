@@ -17,5 +17,17 @@ class OrganizationSerializer(serializers.ModelSerializer):
 class OrganizationInvitationSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrganizationInvitation
-        fields = "__all__"
-        read_only_fields = ("token", "accepted", "created_at")
+        fields = [
+            "id",
+            "email",
+            "organization",
+            "invited_by",
+            "token",
+            "accepted",
+            "created_at",
+        ]
+        read_only_fields = ("token", "accepted", "created_at", "invited_by")
+        extra_kwargs = {
+            "organization": {"required": False},
+            "invited_by": {"required": False},
+        }

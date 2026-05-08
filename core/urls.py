@@ -1,8 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
 from core.health import health_check
@@ -11,19 +9,19 @@ from projects.task_comments import TaskCommentView
 from projects.templates import ProjectTemplateView
 from activity.feed import ActivityFeedView
 from reports.views import ComprehensiveReportView
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
         title="Multi-Tenant SaaS API",
         default_version="v1",
-        description="Complete SaaS backend with multi-tenancy",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="support@saas.com"),
-        license=openapi.License(name="BSD License"),
+        description="SaaS Platform API",
     ),
     public=True,
     permission_classes=[permissions.AllowAny],
 )
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -31,13 +29,6 @@ urlpatterns = [
     path("api/organizations/", include("organizations.urls")),
     path("api/projects/", include("projects.urls")),
     path("api/logs/", include("logs.urls")),
-    # Swagger Documentation
-    path(
-        "swagger/",
-        schema_view.with_ui("swagger", cache_timeout=0),
-        name="schema-swagger-ui",
-    ),
-    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path("api/comments/", include("comments.urls")),
     path("api/notifications/", include("notifications.urls")),
     path("api/webhooks/", include("webhooks.urls")),
@@ -52,12 +43,6 @@ urlpatterns = [
     path("api/reports/", include("reports.urls")),
     path("api/custom-fields/", include("custom_fields.urls")),
     path("health/", health_check, name="health-check"),
-    path(
-        "swagger/",
-        schema_view.with_ui("swagger", cache_timeout=0),
-        name="schema-swagger-ui",
-    ),
-    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path(
         "api/tasks/<int:task_id>/comments/",
         TaskCommentView.as_view(),
@@ -75,4 +60,10 @@ urlpatterns = [
         name="comprehensive-report",
     ),
     path("api/search/", include("projects.search_urls")),
+    path(
+        "swagger/",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
+    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -77,19 +77,38 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 ASGI_APPLICATION = "core.asgi.application"
 
-CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
+# CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "multi_tenant_saas",
+#         "USER": "saas_user",
+#         "PASSWORD": "sophisticated@2026",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
+import os
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "multi_tenant_saas",
-        "USER": "saas_user",
-        "PASSWORD": "sophisticated@2026",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": os.environ.get("DB_NAME", "multi_tenant_saas"),
+        "USER": os.environ.get("DB_USER", "saas_user"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "sophisticated@2026"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "5432"),
     }
 }
-
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -120,6 +139,28 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=Csv())
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_ALL_ORIGINS = True  # For development only
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "x-organization-id",  # Required for multi-tenancy
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "x-organization-id",
+]
 
 
 REST_FRAMEWORK = {
@@ -247,3 +288,11 @@ if "test" in sys.argv:
     DATABASES = {
         "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}
     }
+import os
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
+MAX_UPLOAD_SIZE = 10485760
