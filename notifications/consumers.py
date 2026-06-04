@@ -1,32 +1,41 @@
 import json
+from urllib.parse import parse_qs
 from channels.generic.websocket import AsyncWebsocketConsumer
-from channels.db import database_sync_to_async
-from .models import Notification
 
 
 class NotificationConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        self.user = self.scope["user"]
-        if not self.user.is_authenticated:
-            await self.close()
-            return
+        from channels.db import database_sync_to_async
+        from rest_framework_simplejwt.tokens import AccessToken
+        from accounts.models import User
 
-        self.room_group_name = f"notifications_{self.user.id}"
-        await self.channel_layer.group_add(self.room_group_name, self.channel_name)
-        await self.accept()
+        query = parse_qs(self.scope["query_string"].decode())
+        token = query.get("token", [None])[0]
+
+        if token:
+            try:
+                access_token = AccessToken(token)
+                self.user_id = access_token["user_id"]
+                self.room_group_name = f"notifications_{self.user_id}"
+
+                await self.channel_layer.group_add(
+                    self.room_group_name, self.channel_name
+                )
+                await self.accept()
+            except Exception as e:
+                print(f"Token error: {e}")
+                await self.close()
+        else:
+            await self.close()
 
     async def disconnect(self, close_code):
-        await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
-
-    async def send_notification(self, event):
-        await self.send(
-            text_data=json.dumps(
-                {
-                    "type": "notification",
-                    "id": event["id"],
-                    "title": event["title"],
-                    "message": event["message"],
-                    "created_at": event["created_at"],
-                }
+        if hasattr(self, "room_group_name"):
+            await self.channel_layer.group_discard(
+                self.room_group_name, self.channel_name
             )
-        )
+
+    async def receive(self, text_data):
+        pass
+
+    async def notification_message(self, event):
+        await self.send(text_data=json.dumps(event["message"]))

@@ -4,6 +4,7 @@ from django.db import models
 class Organization(models.Model):
     name = models.CharField(max_length=100)
     plan = models.CharField(max_length=20, default="trial")
+    subscription_status = models.CharField(max_length=20, default="active")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -19,3 +20,6 @@ class OrganizationInvitation(models.Model):
     token = models.CharField(max_length=64, unique=True)
     accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.email} - {self.organization.name}"

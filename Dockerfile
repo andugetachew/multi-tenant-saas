@@ -1,28 +1,32 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Prevents .pyc files and enables stdout/stderr logging
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    postgresql-client \
     libpq-dev \
-    build-essential \
+    libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-
-RUN pip install --upgrade pip
-
-
+# Install Python dependencies
 COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-
+# Copy project source
 COPY . .
 
-EXPOSE 8000
+# Create non-root user and fix permissions
+RUN useradd -m -u 1000 saas_user && \
+    mkdir -p /app/staticfiles /app/media && \
+    chown -R saas_user:saas_user /app
 
+USER saas_user
 
-CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]
+EXPOSE 8000 8001

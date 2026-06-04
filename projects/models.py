@@ -27,11 +27,19 @@ class Project(models.Model):
         default="active",
     )
 
+    class Meta:
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["organization", "status"]),
+            models.Index(fields=["organization", "created_at"]),
+            models.Index(fields=["created_by", "status"]),
+            models.Index(fields=["organization", "status", "created_at"]),
+        ]
+
     def __str__(self):
         return self.name
 
 
-# New Task Model
 class Task(models.Model):
     STATUS_CHOICES = [
         ("pending", "Pending"),
@@ -82,6 +90,16 @@ class Task(models.Model):
     )
     completed_at = models.DateTimeField(null=True, blank=True)
     completion_notes = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["project", "status"]),
+            models.Index(fields=["assigned_to", "status"]),
+            models.Index(fields=["project", "priority"]),
+            models.Index(fields=["due_date"]),
+            models.Index(fields=["project", "status", "due_date"]),
+        ]
 
     def __str__(self):
         return self.title

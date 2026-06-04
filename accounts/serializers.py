@@ -18,6 +18,19 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
 
+class EmailVerificationSerializer(serializers.Serializer):
+    token = serializers.CharField()
+
+
+class PasswordResetRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
+class PasswordResetConfirmSerializer(serializers.Serializer):
+    token = serializers.CharField()
+    new_password = serializers.CharField(validators=[validate_password])
+
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True, required=True, validators=[validate_password]
@@ -48,12 +61,19 @@ class RegisterSerializer(serializers.ModelSerializer):
         validated_data.pop("password2")
         password = validated_data.pop("password")
 
-        # Create organization - removed subscription_status
-        organization = Organization.objects.create(name=org_name, plan="trial")
+        # Create organization (inactive until email verification)
+        organization = Organization.objects.create(
+            name=org_name, plan="trial", subscription_status="pending_verification"
+        )
 
         user = User.objects.create_user(
-            **validated_data, organization=organization, is_owner=True
+            **validated_data,
+            organization=organization,
+            is_owner=True,
+            is_active=False,  # Inactive until email verification
+            is_email_verified=False
         )
         user.set_password(password)
         user.save()
+
         return user

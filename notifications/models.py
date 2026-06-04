@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import User
 
 
 class Notification(models.Model):
@@ -10,7 +11,7 @@ class Notification(models.Model):
     ]
 
     user = models.ForeignKey(
-        "accounts.User", on_delete=models.CASCADE, related_name="notifications"
+        User, on_delete=models.CASCADE, related_name="notifications"
     )
     title = models.CharField(max_length=200)
     message = models.TextField()

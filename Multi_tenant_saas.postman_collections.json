@@ -1,0 +1,1646 @@
+{
+    "info": {
+        "name": "Multi-Tenant SaaS Platform API",
+        "description": "Enterprise-grade multi-tenant SaaS backend with JWT authentication, real-time WebSocket notifications, project/task management, nested comments, analytics dashboard, CSV/PDF/Excel exports, role-based access control, subscription billing, rate limiting, and complete tenant isolation. Built with Django REST Framework.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "version": "2.1.0",
+        "_postman_id": "multi-tenant-saas-collection"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "ws_url",
+            "value": "ws://localhost:8001",
+            "type": "string"
+        },
+        {
+            "key": "access_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "refresh_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "organization_id",
+            "value": "1",
+            "type": "string"
+        },
+        {
+            "key": "project_id",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "task_id",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "comment_id",
+            "value": "",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "🏢 Organization Management",
+            "item": [
+                {
+                    "name": "Get Organization Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "X-Organization-ID",
+                                "value": "{{organization_id}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/organizations/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "organizations",
+                                ""
+                            ]
+                        },
+                        "description": "Retrieve current organization details including name, plan, subscription status, and limits."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Organization",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"My Awesome Company\",\n  \"plan\": \"pro\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/organizations/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "organizations",
+                                ""
+                            ]
+                        },
+                        "description": "Update organization name, plan, or settings."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Invite Team Member",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"teammate@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/organizations/invite/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "organizations",
+                                "invite",
+                                ""
+                            ]
+                        },
+                        "description": "Send organization invitation to a new team member."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Organization Members",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/organizations/members/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "organizations",
+                                "members",
+                                ""
+                            ]
+                        },
+                        "description": "Get all members of current organization with their roles."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "🔐 Authentication",
+            "item": [
+                {
+                    "name": "Register New Tenant (Auto-create Organization)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"newbusiness@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"password2\": \"SecurePass123!\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"organization_name\": \"Acme Corporation\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/register/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "register",
+                                ""
+                            ]
+                        },
+                        "description": "Register a new user and automatically create their organization. Email verification required before login."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login - Get JWT Tokens",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"admin@gmail.com\",\n  \"password\": \"admin123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/login/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login",
+                                ""
+                            ]
+                        },
+                        "description": "Login with email and password. Returns access token (15min) and refresh token (7 days).",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "const jsonData = pm.response.json();",
+                                        "pm.collectionVariables.set(\"access_token\", jsonData.access);",
+                                        "pm.collectionVariables.set(\"refresh_token\", jsonData.refresh);",
+                                        "pm.collectionVariables.set(\"organization_id\", jsonData.user.organization);",
+                                        "console.log(\"Token saved! Organization ID:\", jsonData.user.organization);"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Refresh Access Token",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/token/refresh/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "token",
+                                "refresh",
+                                ""
+                            ]
+                        },
+                        "description": "Get a new access token using refresh token."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Verify Email",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"token\": \"email_verification_token_from_email\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/verify-email/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "verify-email",
+                                ""
+                            ]
+                        },
+                        "description": "Verify email address using token received in email."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Request Password Reset",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"user@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/password-reset/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "password-reset",
+                                ""
+                            ]
+                        },
+                        "description": "Send password reset link to email (rate limited to 3 requests per hour)."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout (Blacklist Token)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"refresh\": \"{{refresh_token}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/logout/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "logout",
+                                ""
+                            ]
+                        },
+                        "description": "Logout and blacklist refresh token."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "📁 Project Management",
+            "item": [
+                {
+                    "name": "List All Projects (Paginated)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/?page=1&page_size=20",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "page_size",
+                                    "value": "20"
+                                }
+                            ]
+                        },
+                        "description": "List all projects in current organization with pagination. Supports cursor-based pagination for infinite scroll."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create New Project",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"E-Commerce Platform\",\n  \"description\": \"Building a modern e-commerce platform with React and Django\",\n  \"status\": \"active\",\n  \"tags\": \"react,django,stripe\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                ""
+                            ]
+                        },
+                        "description": "Create a new project. Rate limited to 50 projects per hour for basic plan.",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "const jsonData = pm.response.json();",
+                                        "if (pm.response.code === 201) {",
+                                        "  pm.collectionVariables.set(\"project_id\", jsonData.id);",
+                                        "  console.log(\"Project ID saved:\", jsonData.id);",
+                                        "}"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Project Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/{{project_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "{{project_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Get detailed information about a specific project including task count, comments, and attachments."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Project",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Updated E-Commerce Platform\",\n  \"description\": \"Full-featured e-commerce with payment integration\",\n  \"status\": \"active\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/{{project_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "{{project_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Update project details. Only admins and project owners can update."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Project",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/{{project_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "{{project_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Soft delete a project. Admins only."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "✅ Task Management",
+            "item": [
+                {
+                    "name": "List Tasks (Filter by Project)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/tasks/?project_id={{project_id}}&status=pending&priority=high",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "tasks",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "project_id",
+                                    "value": "{{project_id}}"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "pending"
+                                },
+                                {
+                                    "key": "priority",
+                                    "value": "high"
+                                }
+                            ]
+                        },
+                        "description": "List tasks with optional filters: status, priority, assigned_to, due_date range."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create New Task",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"project\": {{project_id}},\n  \"title\": \"Implement JWT Authentication\",\n  \"description\": \"Add JWT token authentication with refresh mechanism\",\n  \"priority\": \"high\",\n  \"status\": \"in_progress\",\n  \"due_date\": \"2025-12-31T23:59:59Z\",\n  \"assigned_to\": null,\n  \"estimated_hours\": 8\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/tasks/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "tasks",
+                                ""
+                            ]
+                        },
+                        "description": "Create a new task. Rate limited to 200 tasks per hour for basic plan.",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "const jsonData = pm.response.json();",
+                                        "if (pm.response.code === 201) {",
+                                        "  pm.collectionVariables.set(\"task_id\", jsonData.id);",
+                                        "  console.log(\"Task ID saved:\", jsonData.id);",
+                                        "}"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Task Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"completed\",\n  \"completed_at\": \"2025-01-15T10:30:00Z\",\n  \"actual_hours\": 6.5\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/tasks/{{task_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "tasks",
+                                "{{task_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Update task status (pending, in_progress, completed). Triggers real-time WebSocket notification."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Assign Task to User",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"assigned_to\": 5\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/tasks/{{task_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "tasks",
+                                "{{task_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Assign task to a team member."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Bulk Update Tasks",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"task_ids\": [1, 2, 3],\n  \"updates\": {\n    \"status\": \"completed\"\n  }\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/tasks/bulk/update/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "tasks",
+                                "bulk",
+                                "update",
+                                ""
+                            ]
+                        },
+                        "description": "Bulk update multiple tasks at once."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Task Dependencies",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/tasks/{{task_id}}/dependencies/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "tasks",
+                                "{{task_id}}",
+                                "dependencies",
+                                ""
+                            ]
+                        },
+                        "description": "Get task dependencies and check if task is blocked."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "💬 Comments & Replies",
+            "item": [
+                {
+                    "name": "Get Comments (with Nested Replies)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/comments/?project_id={{project_id}}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "comments",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "project_id",
+                                    "value": "{{project_id}}"
+                                }
+                            ]
+                        },
+                        "description": "Get all comments for a project. Replies are nested under parent comments with infinite depth."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Parent Comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"project\": {{project_id}},\n  \"content\": \"This project looks great! Let me know if you need any help with the backend integration.\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/comments/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "comments",
+                                ""
+                            ]
+                        },
+                        "description": "Create a new top-level comment on a project.",
+                        "event": [
+                            {
+                                "listen": "test",
+                                "script": {
+                                    "exec": [
+                                        "const jsonData = pm.response.json();",
+                                        "if (pm.response.code === 201) {",
+                                        "  pm.collectionVariables.set(\"comment_id\", jsonData.id);",
+                                        "  console.log(\"Comment ID saved:\", jsonData.id);",
+                                        "}"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Reply to Comment (Nested Reply)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"project\": {{project_id}},\n  \"content\": \"Thanks! I'm handling the Django backend. The API is ready for integration.\",\n  \"parent\": {{comment_id}}\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/comments/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "comments",
+                                ""
+                            ]
+                        },
+                        "description": "Reply to an existing comment. Creates nested reply structure."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Comment",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/comments/{{comment_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "comments",
+                                "{{comment_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Delete a comment. Only comment author or admin can delete."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "📊 Dashboard & Analytics",
+            "item": [
+                {
+                    "name": "Dashboard Statistics",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/dashboard/stats/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "dashboard",
+                                "stats",
+                                ""
+                            ]
+                        },
+                        "description": "Get real-time dashboard statistics including project counts, task completion rates, and user activity. Cached for 5 minutes."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Real-time Dashboard (Trends)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/dashboard/realtime/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "dashboard",
+                                "realtime",
+                                ""
+                            ]
+                        },
+                        "description": "Real-time dashboard with 7-day project trends, completion rates, and active users."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Revenue Analytics",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/analytics/revenue/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "analytics",
+                                "revenue",
+                                ""
+                            ]
+                        },
+                        "description": "Get revenue analytics for the last 12 months. Admin only."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Team Performance",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/analytics/performance/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "analytics",
+                                "performance",
+                                ""
+                            ]
+                        },
+                        "description": "Team member performance metrics including tasks completed, completion rate, and average completion time."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Activity Feed",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/activity-feed/?limit=20",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "activity-feed",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "20"
+                                }
+                            ]
+                        },
+                        "description": "Real-time activity feed of all actions in the organization."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "📤 Exports & Reports",
+            "item": [
+                {
+                    "name": "Export Projects to CSV",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/export/projects/csv/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "export",
+                                "projects",
+                                "csv",
+                                ""
+                            ]
+                        },
+                        "description": "Export all projects to CSV format for Excel analysis."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Export Tasks to CSV",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/export/tasks/csv/?project_id={{project_id}}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "export",
+                                "tasks",
+                                "csv",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "project_id",
+                                    "value": "{{project_id}}"
+                                }
+                            ]
+                        },
+                        "description": "Export tasks to CSV. Optional filter by project."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Export Projects to PDF",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/export/projects/pdf/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "export",
+                                "projects",
+                                "pdf",
+                                ""
+                            ]
+                        },
+                        "description": "Generate professional PDF report of all projects."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Export Projects to Excel",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/projects/export/projects/excel/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "projects",
+                                "export",
+                                "projects",
+                                "excel",
+                                ""
+                            ]
+                        },
+                        "description": "Export projects to Excel (.xlsx) format with multiple sheets."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Comprehensive Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/advanced/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "advanced",
+                                ""
+                            ]
+                        },
+                        "description": "Generate advanced report with project forecasts, user productivity, and monthly trends."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "🔍 Global Search",
+            "item": [
+                {
+                    "name": "Global Search",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/search/global/?q=authentication",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "search",
+                                "global",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "authentication"
+                                }
+                            ]
+                        },
+                        "description": "Search across projects, tasks, and comments. Rate limited to 30 searches per minute. Results cached for 60 seconds."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "🔔 Notifications",
+            "item": [
+                {
+                    "name": "Get My Notifications",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/notifications/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "notifications",
+                                ""
+                            ]
+                        },
+                        "description": "Get all notifications for current user with read/unread status."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark All Notifications as Read",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/notifications/mark-all-read/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "notifications",
+                                "mark-all-read",
+                                ""
+                            ]
+                        },
+                        "description": "Mark all unread notifications as read."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Notification",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/notifications/{{notification_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "notifications",
+                                "{{notification_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Delete a specific notification."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "💰 Billing & Subscription",
+            "item": [
+                {
+                    "name": "Get Subscription Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/subscription/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "subscription",
+                                ""
+                            ]
+                        },
+                        "description": "Get current subscription plan, limits, and status."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Upgrade Subscription Plan",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"plan\": \"pro\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/subscription/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "subscription",
+                                ""
+                            ]
+                        },
+                        "description": "Upgrade or downgrade subscription plan. Options: trial, basic, pro, enterprise."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Cancel Subscription",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/subscription/cancel/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "subscription",
+                                "cancel",
+                                ""
+                            ]
+                        },
+                        "description": "Cancel current subscription (downgrades to trial)."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "👥 User Management",
+            "item": [
+                {
+                    "name": "Get My Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/profile/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "profile",
+                                ""
+                            ]
+                        },
+                        "description": "Get current user profile information."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update My Profile",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"role\": \"admin\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/profile/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "profile",
+                                ""
+                            ]
+                        },
+                        "description": "Update user profile information."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"old_password\": \"oldpass123\",\n  \"new_password\": \"NewSecurePass456!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/change-password/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "change-password",
+                                ""
+                            ]
+                        },
+                        "description": "Change user password."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "🔌 WebSocket (Real-time)",
+            "item": [
+                {
+                    "name": "Connect to Notifications WebSocket",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{ws_url}}/ws/notifications/?token={{access_token}}",
+                            "host": [
+                                "{{ws_url}}"
+                            ],
+                            "path": [
+                                "ws",
+                                "notifications",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "token",
+                                    "value": "{{access_token}}"
+                                }
+                            ]
+                        },
+                        "description": "Establish WebSocket connection for real-time notifications. Requires token as query parameter.\n\nWhen connected:\n1. Create a project in another terminal\n2. You'll receive instant notification\n3. Messages appear in the WebSocket stream"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Connect to Task Updates WebSocket",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{ws_url}}/ws/tasks/{{project_id}}/",
+                            "host": [
+                                "{{ws_url}}"
+                            ],
+                            "path": [
+                                "ws",
+                                "tasks",
+                                "{{project_id}}",
+                                ""
+                            ]
+                        },
+                        "description": "Connect to project task updates WebSocket for real-time task status changes."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "🏥 System Health",
+            "item": [
+                {
+                    "name": "Health Check",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/health/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "health",
+                                ""
+                            ]
+                        },
+                        "description": "System health check endpoint. Returns status of database, Redis cache, and Celery worker."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "API Documentation (Swagger)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/swagger/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "swagger",
+                                ""
+                            ]
+                        },
+                        "description": "Interactive Swagger/OpenAPI documentation for all endpoints."
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "// Check if access token exists and is about to expire",
+                    "// For demo purposes, we just log the current token status",
+                    "if (pm.collectionVariables.get(\"access_token\")) {",
+                    "  console.log(\"Using access token:\", pm.collectionVariables.get(\"access_token\").substring(0, 50) + \"...\");",
+                    "} else {",
+                    "  console.log(\"No access token found. Please run Login request first.\");",
+                    "}"
+                ]
+            }
+        },
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "protocolProfileBehavior": {}
+}

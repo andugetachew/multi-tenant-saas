@@ -9,14 +9,25 @@ class CommentListCreateView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         project_id = self.request.query_params.get("project_id")
-        if project_id:
-            return Comment.objects.filter(project_id=project_id)
-        return Comment.objects.filter(
-            project__organization=self.request.user.organization
+        # Get only top-level comments (no parent)
+        queryset = Comment.objects.filter(
+            project__organization=self.request.user.organization,
+            parent__isnull=True,  # Only top-level comments
         )
+        if project_id:
+            queryset = queryset.filter(project_id=project_id)
+        return queryset
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        parent_id = self.request.data.get("parent")
+        parent = None
+        if parent_id:
+            try:
+                parent = Comment.objects.get(id=parent_id)
+            except Comment.DoesNotExist:
+                pass
+
+        serializer.save(user=self.request.user, parent=parent)
 
 
 class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):

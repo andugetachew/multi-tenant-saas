@@ -1,5 +1,7 @@
+# audit/models.py
 from django.db import models
 from organizations.models import Organization
+from accounts.models import User
 
 
 class AuditLog(models.Model):
@@ -15,7 +17,7 @@ class AuditLog(models.Model):
     ]
 
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    user = models.ForeignKey("accounts.User", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     action = models.CharField(max_length=20, choices=ACTION_TYPES)
     model_name = models.CharField(max_length=100)
     object_id = models.IntegerField()
@@ -32,3 +34,9 @@ class AuditLog(models.Model):
             models.Index(fields=["organization", "created_at"]),
             models.Index(fields=["user", "action"]),
         ]
+
+    def __str__(self):
+        return f"{self.user.email} - {self.action} - {self.model_name}"
+
+
+ActivityLog = AuditLog

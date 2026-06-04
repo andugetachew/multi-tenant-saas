@@ -8,9 +8,12 @@ from django.utils import timezone
 from projects.models import Project, Task
 from comments.models import Comment
 
+from core.rate_limits import DashboardRealtimeThrottle, DashboardStatsThrottle
+
 
 class RealTimeDashboardView(APIView):
     permission_classes = [IsAuthenticated]
+    throttle_classes = [DashboardRealtimeThrottle]
 
     def get(self, request):
         try:
@@ -56,3 +59,35 @@ class RealTimeDashboardView(APIView):
             )
         except Exception as e:
             return Response({"error": str(e)}, status=500)
+
+
+class DashboardStatsView(APIView):
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [DashboardStatsThrottle]
+
+    def get(self, request):
+        from projects.models import Project, Task
+
+        org = request.user.organization
+        total_projects = Project.objects.filter(organization=org).count()
+        total_tasks = Task.objects.filter(project__organization=org).count()
+        completed_tasks = Task.objects.filter(
+            project__organization=org, status="completed"
+        ).count()
+
+        return Response(
+            {
+                "organization_name": org.name,
+                "organization_plan": org.plan,
+                "total_projects": total_projects,
+                "total_tasks": total_tasks,
+                "completed_tasks": completed_tasks,
+                "pending_tasks": total_tasks - completed_tasks,
+                "in_progress_tasks": Task.objects.filter(
+                    project__organization=org, status="in_progress"
+                ).count(),
+                "total_users": org.users.count(),
+                "user_role": request.user.role,
+                "is_owner": request.user.is_owner,
+            }
+        )
