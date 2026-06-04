@@ -1,16 +1,19 @@
-__pycache__/ 
-*.pyc 
-.env 
-db.sqlite3 
-/static/ 
-/media/ 
-.vscode/ 
-.idea/ 
-htmlcov/ 
-.coverage 
-.pytest_cache/ 
-venv/ 
-__pycache__/ 
-*.pyc 
-.env 
-logs/debug.log 
+"# Python" 
+"__pycache__/" 
+"*.pyc" 
+"venv/" 
+"" 
+"# Environment" 
+".env" 
+".env.local" 
+"" 
+"# Database" 
+"db.sqlite3" 
+"" 
+"# IDE" 
+".vscode/" 
+".idea/" 
+"" 
+"# Logs" 
+"logs/*.log" 
+"*.log" 
