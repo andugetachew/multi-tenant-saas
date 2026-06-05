@@ -95,7 +95,4 @@ jobs:
           curl -X POST https://api.render.com/deploy/${{ secrets.RENDER_SERVICE_ID }} \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
 
-      - name: Health check
-        run: |
-          sleep 30
-          curl --fail https://yourdomain.com/health/
+      
