@@ -46,6 +46,9 @@ jobs:
           DB_PASSWORD: test_pass
           DB_HOST: localhost
           DB_PORT: 5432
+          CI: true
+          GITHUB_ACTIONS: true
+          CELERY_TASK_ALWAYS_EAGER: true
         run: python manage.py migrate
       
       - name: Run tests
@@ -55,6 +58,9 @@ jobs:
           DB_PASSWORD: test_pass
           DB_HOST: localhost
           DB_PORT: 5432
+          CI: true
+          GITHUB_ACTIONS: true
+          CELERY_TASK_ALWAYS_EAGER: true
         run: pytest --cov=. --cov-report=xml
       
       - name: Upload coverage
