@@ -19,7 +19,7 @@ class AuthTestCase(TestCase):
         self.client = APIClient()
         self.org = Organization.objects.create(name="Test Org", plan="basic")
 
-    @patch('accounts.tasks.send_verification_email_task.delay')
+    @patch('tasks.email_tasks.send_verification_email_task.delay')
     def test_register_success(self, mock_task):
         """Test user registration with organization creation"""
         url = reverse("register")
@@ -34,7 +34,7 @@ class AuthTestCase(TestCase):
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(User.objects.filter(email="newuser@example.com").exists())
-        
+
     def test_register_password_mismatch(self):
         """Test registration with mismatched passwords"""
         url = reverse("register")
