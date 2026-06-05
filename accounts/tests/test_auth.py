@@ -5,17 +5,22 @@ from rest_framework import status
 from accounts.models import User
 from organizations.models import Organization
 
+from unittest.mock import patch
+from django.test import TestCase
+from django.urls import reverse
+from rest_framework.test import APIClient
+from rest_framework import status
+from accounts.models import User
+from organizations.models import Organization
+
 
 class AuthTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.org = Organization.objects.create(name="Test Org", plan="basic")
 
-    from unittest.mock import patch
-
-    @patch('celery.current_app.send_task')
-    @patch('accounts.tasks.send_welcome_email_task.delay')
-    def test_register_success(self):
+    @patch('accounts.tasks.send_verification_email_task.delay')
+    def test_register_success(self, mock_task):
         """Test user registration with organization creation"""
         url = reverse("register")
         data = {
@@ -29,7 +34,7 @@ class AuthTestCase(TestCase):
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(User.objects.filter(email="newuser@example.com").exists())
-
+        
     def test_register_password_mismatch(self):
         """Test registration with mismatched passwords"""
         url = reverse("register")
