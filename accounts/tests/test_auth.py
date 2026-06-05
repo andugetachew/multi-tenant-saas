@@ -11,6 +11,10 @@ class AuthTestCase(TestCase):
         self.client = APIClient()
         self.org = Organization.objects.create(name="Test Org", plan="basic")
 
+    from unittest.mock import patch
+
+    @patch('celery.current_app.send_task')
+    @patch('accounts.tasks.send_welcome_email_task.delay')
     def test_register_success(self):
         """Test user registration with organization creation"""
         url = reverse("register")
