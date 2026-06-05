@@ -13,7 +13,8 @@ import pytest
 def pytest_configure(config):
     from django.conf import settings
     settings.TESTING = True
-
+    settings.CELERY_TASK_ALWAYS_EAGER = True
+    settings.CELERY_TASK_EAGER_PROPAGATES = True
 
 def pytest_sessionstart(session):
     from django.conf import settings
