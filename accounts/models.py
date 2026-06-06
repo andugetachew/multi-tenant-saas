@@ -8,7 +8,7 @@ import secrets
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
 
-
+from organizations.models import Organization
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:

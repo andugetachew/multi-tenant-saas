@@ -165,9 +165,16 @@ def disable_throttling(settings):
     settings.REST_FRAMEWORK = {
         **settings.REST_FRAMEWORK,
         'DEFAULT_THROTTLE_CLASSES': [],
-        'DEFAULT_THROTTLE_RATES': {},
+        'DEFAULT_THROTTLE_RATES': {
+            'user': '1000/day',
+            'anon': '1000/day',
+            'login': '1000/day',
+            'register': '1000/day',
+            'search': '1000/day',
+        },
     }
-    from accounts.views import RegisterView, LoginView, VerifyEmailView
+    from accounts.views import RegisterView, LoginView, VerifyEmailView, PasswordResetRequestView
     RegisterView.throttle_classes = []
     LoginView.throttle_classes = []
     VerifyEmailView.throttle_classes = []
+    PasswordResetRequestView.throttle_classes = []

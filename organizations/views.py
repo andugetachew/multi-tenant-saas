@@ -36,20 +36,29 @@ class InviteUserView(generics.CreateAPIView):
         return super().get_serializer(*args, **kwargs)
 
     def perform_create(self, serializer):
-        token = secrets.token_urlsafe(32)
+        if not self.request.user.is_owner:
+            from rest_framework.exceptions import PermissionDenied
+            raise PermissionDenied("Only organization owners can invite users.")
 
-        # ✅ fallback to user.organization when middleware hasn't set request.organization
         org = (
             getattr(self.request, "organization", None)
             or self.request.user.organization
         )
 
+        email = serializer.validated_data.get("email")
+
+        if OrganizationInvitation.objects.filter(
+            organization=org, email=email, accepted=False
+        ).exists():
+            from rest_framework.exceptions import ValidationError
+            raise ValidationError("An invitation has already been sent to this email.")
+
+        token = secrets.token_urlsafe(32)
         invitation = serializer.save(
             organization=org,
             invited_by=self.request.user,
             token=token,
         )
-
         create_notification(
             user=self.request.user,
             title="Invitation Sent",

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_redis",
     'django_celery_beat',
     'django_celery_results',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [

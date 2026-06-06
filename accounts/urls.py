@@ -33,5 +33,7 @@ urlpatterns = [
         PasswordResetConfirmView.as_view(),
         name="reset-password",
     ),
+    path("password-reset/", PasswordResetRequestView.as_view(), name="password-reset"),
+    path("password-reset/confirm/", PasswordResetConfirmView.as_view(), name="password-reset-confirm"),
     path("test-login/", TestLoginView.as_view(), name="test-login"),
 ]
