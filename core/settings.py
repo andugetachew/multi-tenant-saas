@@ -132,7 +132,6 @@ from corsheaders.defaults import default_headers
 CORS_ALLOW_HEADERS = list(default_headers) + [
     "x-organization-id",  # custom tenant header
 ]
-
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -142,19 +141,40 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 20,
     "ORDERING_PARAM": "ordering",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",  
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
         "rest_framework.throttling.UserRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "100/day",  
-        "user": "1000/day",  
-        "login": "5/min",  
-        "register": "3/min",  
-        "search": "30/min",  
+        "anon": "100/day",
+        "user": "1000/day",
+        "login": "5/min",
+        "register": "3/min",
+        "search": "30/min",
     },
 }
 
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Multi-Tenant SaaS API",
+    "DESCRIPTION": "Production-style SaaS backend with multi-tenancy, JWT auth, project/task management, real-time notifications, and background processing.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "CONTACT": {
+        "name": "Andualem Getachew",
+        "email": "andugeta41@gmail.com",
+    },
+    "LICENSE": {"name": "MIT"},
+    "TAGS": [
+        {"name": "Authentication", "description": "JWT auth, registration, password reset"},
+        {"name": "Organizations", "description": "Tenant management"},
+        {"name": "Projects", "description": "Project CRUD and search"},
+        {"name": "Tasks", "description": "Task management and bulk operations"},
+        {"name": "Notifications", "description": "Real-time notifications"},
+        {"name": "Dashboard", "description": "Analytics and stats"},
+    ],
+}
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),

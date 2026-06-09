@@ -36,7 +36,7 @@ x-app-base: &app-base
 
 services:
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     container_name: saas_db
     environment:
       POSTGRES_DB: ${DB_NAME}

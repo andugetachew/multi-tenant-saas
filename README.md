@@ -4,7 +4,7 @@
 ![Tests](https://img.shields.io/badge/tests-147%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Django](https://img.shields.io/badge/django-5.2-green)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
 ![Redis](https://img.shields.io/badge/Redis-7-red)
 ![Celery](https://img.shields.io/badge/Celery-enabled-green)
 ![Docker](https://img.shields.io/badge/Docker-enabled-blue)
@@ -61,7 +61,7 @@ Designed to demonstrate backend engineering best practices including tenant isol
 | Layer            | Technology                    |
 | ---------------- | ----------------------------- |
 | Backend          | Django 5.2, Django REST Framework |
-| Database         | PostgreSQL 15                 |
+| Database         | PostgreSQL 16                 |
 | Cache & Broker   | Redis 7                       |
 | Background Tasks | Celery + django-celery-beat   |
 | Real-Time        | Django Channels + Daphne      |
@@ -71,6 +71,29 @@ Designed to demonstrate backend engineering best practices including tenant isol
 | Containerization | Docker + Docker Compose       |
 | Reverse Proxy    | Nginx                         |
 
+
+
+## 📁 Project Structure
+
+```
+multi-tenant-saas/
+├── accounts/            # Auth, registration, email verification, password reset
+├── organizations/       # Tenant management, invitations, middleware
+├── projects/            # Project CRUD, search, bulk operations, exports
+│   ├── views.py         # ProjectListCreateView, TaskListCreateView, analytics
+│   ├── bulk_ops.py      # BulkProjectDeleteView, BulkTaskUpdateView
+│   ├── export_views.py  # CSV, PDF, Excel exports
+│   └── search.py        # ProjectSearch, TaskSearch
+├── notifications/       # Real-time notifications via WebSockets
+├── audit/               # Activity logging middleware
+├── billing/             # Plan management, subscription tracking
+├── analytics/           # Dashboard analytics, revenue metrics
+├── tracking/            # Time tracking per task
+├── chat/                # Organization-scoped messaging
+├── webhooks/            # Configurable outbound webhooks
+├── custom_fields/       # Dynamic fields per organization
+└── core/                # Settings, URLs, middleware, pagination
+```
 ---
 
 ## 🏢 Multi-Tenancy Architecture
@@ -397,7 +420,7 @@ docker-compose up --build
 | web          | Django + Gunicorn (HTTP)           | 8000  |
 | daphne       | Django Channels (WebSocket)        | 8001  |
 | nginx        | Reverse proxy                      | 8080  |
-| db           | PostgreSQL 15                      | 5434  |
+| db           | PostgreSQL 16                      | 5434  |
 | redis        | Cache + Message broker             | 6381  |
 | celery       | Background task worker             | —     |
 | celery-beat  | Periodic task scheduler            | —     |
@@ -430,5 +453,5 @@ MIT License
 
 **Andualem Getachew**
 
-GitHub: [@andugetachew](https://github.com/andugetachew)
-Email: [andugeta41@gmail.com](mailto:andugeta41@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-andugetachew-black?logo=github)](https://github.com/andugetachew)
+[![Email](https://img.shields.io/badge/Email-andugeta41%40gmail.com-red?logo=gmail)](mailto:andugeta41@gmail.com)

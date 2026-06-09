@@ -24,9 +24,18 @@ class CustomUserManager(BaseUserManager):
     def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_owner", True)
+        extra_fields.setdefault("is_email_verified", True)
+
+        if not extra_fields.get("organization"):
+            from organizations.models import Organization
+            org, _ = Organization.objects.get_or_create(
+                name="Default Organization",
+                defaults={"plan": "trial"}
+            )
+            extra_fields["organization"] = org
+
         return self.create_user(email, password, **extra_fields)
-
-
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
