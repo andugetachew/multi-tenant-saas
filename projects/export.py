@@ -1,13 +1,12 @@
 import csv
-import pandas as pd
+import json
 from django.http import HttpResponse
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
+from openpyxl import Workbook
 from .models import Project, Task
-import pandas as pd
-from django.http import HttpResponse
 
 
 def export_projects_csv(user):
@@ -21,16 +20,14 @@ def export_projects_csv(user):
     writer.writerow(["ID", "Name", "Description", "Status", "Created At", "Task Count"])
 
     for project in projects:
-        writer.writerow(
-            [
-                project.id,
-                project.name,
-                project.description,
-                getattr(project, "status", "active"),
-                project.created_at,
-                project.tasks.count(),
-            ]
-        )
+        writer.writerow([
+            project.id,
+            project.name,
+            project.description,
+            getattr(project, "status", "active"),
+            project.created_at,
+            project.tasks.count(),
+        ])
 
     return response
 
@@ -45,22 +42,18 @@ def export_tasks_csv(user, project_id=None):
     response["Content-Disposition"] = 'attachment; filename="tasks.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(
-        ["ID", "Title", "Status", "Priority", "Project", "Due Date", "Created At"]
-    )
+    writer.writerow(["ID", "Title", "Status", "Priority", "Project", "Due Date", "Created At"])
 
     for task in tasks:
-        writer.writerow(
-            [
-                task.id,
-                task.title,
-                task.status,
-                task.priority,
-                task.project.name,
-                task.due_date,
-                task.created_at,
-            ]
-        )
+        writer.writerow([
+            task.id,
+            task.title,
+            task.status,
+            task.priority,
+            task.project.name,
+            task.due_date,
+            task.created_at,
+        ])
 
     return response
 
@@ -75,38 +68,30 @@ def export_projects_pdf(user):
     doc = SimpleDocTemplate(response, pagesize=letter)
     elements = []
 
-    # Title
     styles = getSampleStyleSheet()
     title = Paragraph(f"Projects Report - {user.organization.name}", styles["Title"])
     elements.append(title)
 
-    # Table data
     data = [["Name", "Description", "Tasks", "Created"]]
     for project in projects:
-        data.append(
-            [
-                project.name,
-                project.description[:50],
-                str(project.tasks.count()),
-                project.created_at.strftime("%Y-%m-%d"),
-            ]
-        )
+        data.append([
+            project.name,
+            project.description[:50],
+            str(project.tasks.count()),
+            project.created_at.strftime("%Y-%m-%d"),
+        ])
 
     table = Table(data)
-    table.setStyle(
-        TableStyle(
-            [
-                ("BACKGROUND", (0, 0), (-1, 0), colors.grey),
-                ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
-                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-                ("FONTSIZE", (0, 0), (-1, 0), 14),
-                ("BOTTOMPADDING", (0, 0), (-1, 0), 12),
-                ("BACKGROUND", (0, 1), (-1, -1), colors.beige),
-                ("GRID", (0, 0), (-1, -1), 1, colors.black),
-            ]
-        )
-    )
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.grey),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.whitesmoke),
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, 0), 14),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 12),
+        ("BACKGROUND", (0, 1), (-1, -1), colors.beige),
+        ("GRID", (0, 0), (-1, -1), 1, colors.black),
+    ]))
 
     elements.append(table)
     doc.build(elements)
@@ -114,35 +99,36 @@ def export_projects_pdf(user):
 
 
 def export_projects_excel(user):
-    """Export projects to Excel"""
+    """Export projects to Excel using openpyxl"""
     projects = Project.objects.filter(organization=user.organization)
 
-    data = []
-    for project in projects:
-        data.append(
-            {
-                "ID": project.id,
-                "Name": project.name,
-                "Description": project.description,
-                "Status": getattr(project, "status", "active"),
-                "Tasks": project.tasks.count(),
-                "Created": project.created_at.strftime("%Y-%m-%d %H:%M"),
-            }
-        )
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Projects"
 
-    df = pd.DataFrame(data)
+    ws.append(["ID", "Name", "Description", "Status", "Tasks", "Created"])
+
+    for project in projects:
+        ws.append([
+            project.id,
+            project.name,
+            project.description,
+            getattr(project, "status", "active"),
+            project.tasks.count(),
+            project.created_at.strftime("%Y-%m-%d %H:%M"),
+        ])
+
     response = HttpResponse(
         content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
     response["Content-Disposition"] = 'attachment; filename="projects.xlsx"'
-    df.to_excel(response, index=False)
+    wb.save(response)
     return response
 
 
 def export_projects_json(user):
     """Export projects to JSON"""
     from django.core.serializers import serialize
-    import json
 
     projects = Project.objects.filter(organization=user.organization)
     data = json.loads(serialize("json", projects))
