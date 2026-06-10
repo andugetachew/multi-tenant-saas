@@ -184,11 +184,7 @@ SIMPLE_JWT = {
 }
 
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels.layers.InMemoryChannelLayer",
-#     },
-# }
+
 REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
 
 CHANNEL_LAYERS = {
@@ -214,14 +210,6 @@ LOGGING = {
 }
 
 
-
-# CELERY_BROKER_URL = os.environ.get("REDIS_URL", "redis://localhost:6379")
-# CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL", "redis://localhost:6379")
-# CELERY_ACCEPT_CONTENT = ["json"]
-# CELERY_TASK_SERIALIZER = "json"
-# CELERY_RESULT_SERIALIZER = "json"
-# CELERY_TIMEZONE = TIME_ZONE
-# CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
@@ -264,23 +252,6 @@ REDIS_HOST = os.environ.get("REDIS_HOST", "localhost")
 REDIS_PORT = int(os.environ.get("REDIS_PORT", 6379))
 REDIS_DB = int(os.environ.get("REDIS_DB", 0))
 
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": f"redis://{REDIS_HOST}:{REDIS_PORT}/1",
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#             "CONNECTION_POOL_CLASS": "redis.BlockingConnectionPool",
-#             "CONNECTION_POOL_CLASS_KWARGS": {
-#                 "max_connections": 50,
-#                 "timeout": 20,
-#             },
-#             "SOCKET_TIMEOUT": 5,
-#             "SOCKET_CONNECT_TIMEOUT": 5,
-#             "RETRY_ON_TIMEOUT": True,
-#         },
-#     }
-# }
 
 CACHES = {
     "default": {
@@ -309,15 +280,6 @@ CACHE_TTL = {
     "search_results": 60, 
 }
 
-# import urllib.parse
-# redis_url = urllib.parse.urlparse(os.environ.get("REDIS_URL", "redis://redis:6379/0"))
-# REDIS_HOST = redis_url.hostname
-# REDIS_PORT = redis_url.port
-# REDIS_DB = int(redis_url.path.lstrip("/") or 0)
-
-# ── Redis ──────────────────────────────────────────────────────────────────
-
-# Parse URL for host/port (works with both redis:// and rediss://)
 import urllib.parse
 _redis = urllib.parse.urlparse(REDIS_URL)
 REDIS_HOST = _redis.hostname
