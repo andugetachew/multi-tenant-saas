@@ -9,6 +9,17 @@
 ![Celery](https://img.shields.io/badge/Celery-enabled-green)
 ![Docker](https://img.shields.io/badge/Docker-enabled-blue)
 
+## 🌐 Live Demo
+
+| | URL |
+|--|--|
+| **API Base** | https://saas-app-h7sk.onrender.com |
+| **Swagger Docs** | https://saas-app-h7sk.onrender.com/api/docs/ |
+| **ReDoc** | https://saas-app-h7sk.onrender.com/api/redoc/ |
+| **Health Check** | https://saas-app-h7sk.onrender.com/health/ |
+
+> ⚠️ Hosted on Render free tier — first request may take 50 seconds to wake up.
+
 ## 📊 Quality Metrics
 
 - 147 automated tests
