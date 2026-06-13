@@ -1,36 +1,36 @@
-# Python
+
 __pycache__/
 *.pyc
 *.pyo
 venv/
 
-# Environment
+
 .env
 .env.local
 
-# Database
 db.sqlite3
 
-# IDE
+
 .vscode/
 .idea/
 
-# Logs
-logs/
-logs/*.log
+
 *.log
 
-# Testing
-htmlcov/
 .coverage
-.coverage.*
 coverage.xml
 .pytest_cache/
 
-# Django
+
 staticfiles/
 media/
-*.egg-info/
 
-# Docker
-.dockerignore
+
+celerybeat-schedule
+celerybeat.pid
+
+
+dump.rdb
+
+
+*.pid
