@@ -189,18 +189,21 @@ SIMPLE_JWT = {
 }
 
 
-
 REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+
+is_ssl = REDIS_URL.startswith("rediss://")
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [REDIS_URL],
+            "hosts": [
+                {"address": REDIS_URL, "ssl_cert_reqs": None}
+                if is_ssl else REDIS_URL
+            ],
         },
     },
 }
-
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
@@ -272,7 +275,7 @@ CACHES = {
             "SOCKET_TIMEOUT": 5,
             "SOCKET_CONNECT_TIMEOUT": 5,
             "RETRY_ON_TIMEOUT": True,
-            "CONNECTION_POOL_KWARGS": {"ssl_cert_reqs": None},
+            "CONNECTION_POOL_KWARGS": {"ssl_cert_reqs": None} if REDIS_URL.startswith("rediss://") else {},
         },
     }
 }
