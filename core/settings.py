@@ -190,7 +190,6 @@ SIMPLE_JWT = {
 
 
 REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
-
 is_ssl = REDIS_URL.startswith("rediss://")
 
 CHANNEL_LAYERS = {
@@ -261,21 +260,24 @@ REDIS_PORT = int(os.environ.get("REDIS_PORT", 6379))
 REDIS_DB = int(os.environ.get("REDIS_DB", 0))
 
 
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": REDIS_URL,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "CONNECTION_POOL_CLASS": "redis.BlockingConnectionPool",
-            "CONNECTION_POOL_CLASS_KWARGS": {
-                "max_connections": 50,
-                "timeout": 20,
-            },
+            **({
+                "CONNECTION_POOL_CLASS": "redis.BlockingConnectionPool",
+                "CONNECTION_POOL_CLASS_KWARGS": {
+                    "max_connections": 50,
+                    "timeout": 20,
+                },
+                "CONNECTION_POOL_KWARGS": {"ssl_cert_reqs": None},
+            } if is_ssl else {}),
             "SOCKET_TIMEOUT": 5,
             "SOCKET_CONNECT_TIMEOUT": 5,
             "RETRY_ON_TIMEOUT": True,
-            "CONNECTION_POOL_KWARGS": {"ssl_cert_reqs": None} if REDIS_URL.startswith("rediss://") else {},
         },
     }
 }
