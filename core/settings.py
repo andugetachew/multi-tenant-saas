@@ -3,7 +3,10 @@ from pathlib import Path
 from datetime import timedelta
 import sys
 import dj_database_url
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env",override=False)
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
@@ -146,7 +149,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 20,
     "ORDERING_PARAM": "ordering",
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",  
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.AnonRateThrottle",
         "rest_framework.throttling.UserRateThrottle",
@@ -231,15 +234,14 @@ EMAIL_BACKEND = os.getenv(
     "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
 )
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
-EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))  # ← Added default 587
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))  # ΓåÉ Added default 587
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "noreply@example.com")
-REDIS_URL = os.getenv("REDIS_URL")
 
-CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
-CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", REDIS_URL)
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", REDIS_URL)
 
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://localhost:3000")
 
@@ -284,14 +286,14 @@ CACHES = {
 
 
 CACHE_TTL = {
-    "dashboard_stats": 300,  
-    "realtime_dashboard": 180,  
-    "project_list": 120,  
-    "search_results": 60, 
+    "dashboard_stats": 300,
+    "realtime_dashboard": 180,
+    "project_list": 120,
+    "search_results": 60,
 }
 
 import urllib.parse
-_redis = urllib.parse.urlparse(REDIS_URL)
+_redis = urllib.parse.urlparse(REDIS_URL or "redis://localhost:6379/0")
 REDIS_HOST = _redis.hostname
 REDIS_PORT = _redis.port or 6379
 REDIS_DB = int(_redis.path.lstrip("/") or 0)
@@ -300,4 +302,3 @@ import sys
 if 'pytest' in sys.modules or 'test' in sys.argv:
     REST_FRAMEWORK['DEFAULT_THROTTLE_CLASSES'] = []
     REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {}
-
