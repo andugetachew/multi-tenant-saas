@@ -3,10 +3,7 @@ from pathlib import Path
 from datetime import timedelta
 import sys
 import dj_database_url
-from dotenv import load_dotenv
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env",override=False)
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "")
 DEBUG = os.environ.get("DEBUG", "False") == "True"
