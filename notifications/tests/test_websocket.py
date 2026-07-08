@@ -58,26 +58,37 @@ class WebSocketTestCase(TransactionTestCase):
 
     async def test_websocket_tenant_isolation(self):
         """
-        Ensure user cannot receive messages from another org
+        Ensure a user only receives notifications sent to their own group,
+        not another org's user's notifications.
         """
+        from channels.layers import get_channel_layer
 
         communicator = WebsocketCommunicator(
             application,
             f"/ws/notifications/?token={self.token}"
         )
-
         connected, _ = await communicator.connect()
         self.assertTrue(connected)
 
+        channel_layer = get_channel_layer()
 
-        await communicator.send_json_to({
-            "type": "test.message",
-            "message": "Org A message"
-        })
+        # Simulate a notification meant for a DIFFERENT user (other org)
+        await channel_layer.group_send(
+            f"notifications_{self.other_user.id}",
+            {"type": "notification.message", "message": {"title": "Should not arrive"}},
+        )
 
-        response = await communicator.receive_json_from()
+        # This user should NOT receive it
+        nothing_received = await communicator.receive_nothing(timeout=1)
+        self.assertTrue(nothing_received)
 
-  
-        self.assertIn("message", response)
+        # Now simulate a notification meant for THIS user — should arrive
+        await channel_layer.group_send(
+            f"notifications_{self.user.id}",
+            {"type": "notification.message", "message": {"title": "Should arrive"}},
+        )
+
+        response = await communicator.receive_json_from(timeout=2)
+        self.assertEqual(response["title"], "Should arrive")
 
         await communicator.disconnect()

@@ -1,3 +1,4 @@
+
 import pytest
 from django.test import Client
 from rest_framework.test import APIClient
@@ -5,10 +6,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from accounts.models import User
 from organizations.models import Organization
 from projects.models import Project, Task
-
-
-import pytest
-
 
 def pytest_configure(config):
     from django.conf import settings

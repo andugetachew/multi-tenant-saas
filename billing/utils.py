@@ -90,3 +90,8 @@ def get_remaining_limit(organization, resource_type):
         current = 0
 
     return max(0, max_limit - current)
+def sync_org_from_subscription(subscription):
+    org = subscription.organization
+    org.plan = subscription.plan.slug if subscription.plan else "free"
+    org.subscription_status = subscription.status
+    org.save(update_fields=["plan", "subscription_status"])

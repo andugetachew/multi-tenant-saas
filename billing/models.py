@@ -20,6 +20,7 @@ class Plan(models.Model):
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    stripe_price_id = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         ordering = ["price_monthly"]
@@ -63,6 +64,8 @@ class Subscription(models.Model):
     has_audit_logs = models.BooleanField(default=False)
 
     updated_at = models.DateTimeField(auto_now=True)
+    stripe_customer_id = models.CharField(max_length=100, blank=True, null=True)
+    stripe_subscription_id = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return (
@@ -169,3 +172,8 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.organization.name} - {self.type} - {self.amount} {self.currency}"
+
+class ProcessedWebhookEvent(models.Model):
+    event_id = models.CharField(max_length=255, unique=True)
+    event_type = models.CharField(max_length=100)
+    processed_at = models.DateTimeField(auto_now_add=True)

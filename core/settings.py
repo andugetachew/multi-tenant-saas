@@ -3,12 +3,13 @@ from pathlib import Path
 from datetime import timedelta
 import sys
 import dj_database_url
+from decouple import config, Csv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "")
-DEBUG = os.environ.get("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(",")
-# APPS
+SECRET_KEY = config("SECRET_KEY", default="django-insecure-default-key-for-dev")
+DEBUG = config("DEBUG", cast=bool, default=True)
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default="127.0.0.1,localhost")
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -87,17 +88,16 @@ ASGI_APPLICATION = "core.asgi.application"
 DATABASES = {
     "default": dj_database_url.config(
         default="postgres://{}:{}@{}:{}/{}".format(
-            os.environ.get("DB_USER", "postgres"),
-            os.environ.get("DB_PASSWORD", "postgres"),
-            os.environ.get("DB_HOST", "localhost"),
-            os.environ.get("DB_PORT", "5432"),
-            os.environ.get("DB_NAME", "test_db"),
+            config("DB_USER", default="postgres"),
+            config("DB_PASSWORD", default="postgres"),
+            config("DB_HOST", default="localhost"),
+            config("DB_PORT", default="5432"),
+            config("DB_NAME", default="test_db"),
         ),
         conn_max_age=600,
         ssl_require=not DEBUG,
     )
 }
-
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -231,7 +231,7 @@ EMAIL_BACKEND = os.getenv(
     "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend"
 )
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
-EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))  # ΓåÉ Added default 587
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))  # ╬ô├Ñ├ë Added default 587
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
@@ -298,4 +298,13 @@ REDIS_DB = int(_redis.path.lstrip("/") or 0)
 import sys
 if 'pytest' in sys.modules or 'test' in sys.argv:
     REST_FRAMEWORK['DEFAULT_THROTTLE_CLASSES'] = []
-    REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {}
+    REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {
+        "anon": None,
+        "user": None,
+        "login": None,
+        "register": None,
+        "search": None,
+    }
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
+FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://localhost:3000")

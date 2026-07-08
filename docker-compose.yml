@@ -19,6 +19,9 @@ x-common-env: &common-env
   REDIS_HOST: redis
   REDIS_PORT: "6379"
   REDIS_DB: "0"
+  STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+  STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
+  FRONTEND_URL: ${FRONTEND_URL}
 
 x-app-base: &app-base
   build: .
