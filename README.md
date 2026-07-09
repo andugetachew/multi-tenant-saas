@@ -27,12 +27,7 @@
 - Multi-tenant isolation tests included
 - Integration + unit + permission test layers
 
-A production-grade SaaS backend built with Django REST Framework that supports multi-tenancy, JWT authentication, project and task management, real-time notifications, background processing, and scalable architecture patterns.
-
-Built to demonstrate real-world backend engineering skills including multi-tenancy, scalable architecture design, asynchronous processing, and production deployment patterns used in SaaS systems.
-
-Designed to demonstrate backend engineering best practices including tenant isolation, asynchronous task processing, Redis caching, comprehensive testing, and containerized deployment with Nginx.
-
+A Django REST Framework backend that demonstrates multi-tenant SaaS architecture, tenant isolation, JWT authentication, real-time communication, background processing, and production-oriented deployment practices using Docker, Nginx, Redis, and Celery.
 ---
 
 ## 📸 API Documentation Preview
@@ -48,8 +43,6 @@ Designed to demonstrate backend engineering best practices including tenant isol
 ### Organizations & Notifications
 ![Organizations and Notifications](docs/swagger3.png)
 
-### Analytics, Billing & More
-![Analytics and Billing](docs/swagger4.png)
 
 ---
 
@@ -91,18 +84,9 @@ multi-tenant-saas/
 ├── accounts/            # Auth, registration, email verification, password reset
 ├── organizations/       # Tenant management, invitations, middleware
 ├── projects/            # Project CRUD, search, bulk operations, exports
-│   ├── views.py         # ProjectListCreateView, TaskListCreateView, analytics
-│   ├── bulk_ops.py      # BulkProjectDeleteView, BulkTaskUpdateView
-│   ├── export_views.py  # CSV, PDF, Excel exports
-│   └── search.py        # ProjectSearch, TaskSearch
 ├── notifications/       # Real-time notifications via WebSockets
-├── audit/               # Activity logging middleware
 ├── billing/             # Plan management, subscription tracking
-├── analytics/           # Dashboard analytics, revenue metrics
-├── tracking/            # Time tracking per task
-├── chat/                # Organization-scoped messaging
 ├── webhooks/            # Configurable outbound webhooks
-├── custom_fields/       # Dynamic fields per organization
 └── core/                # Settings, URLs, middleware, pagination
 ```
 ---
@@ -143,52 +127,26 @@ This platform uses a **shared database with row-level tenant isolation** — eve
 | Viewer | Read     | Assigned | No | No |
 
 ---
-
-## 📁 Core Modules
+## 📁  Core Modules
 
 ### Projects
-- Full CRUD with organization-scoped queries
-- Search and filtering by status, date, tags
-- CSV, PDF, and Excel export
-- Bulk archive and bulk delete
-- Project templates
+- CRUD, search, filtering
+- Bulk archive/delete
+- CSV/PDF/Excel export
 
 ### Tasks
-- Task assignment to organization members
-- Status tracking: pending → in_progress → completed
-- Priority levels: low, medium, high
-- Subtasks and task dependencies
-- Bulk status updates
-- Time tracking entries per task
-
-### Comments
-- Nested threaded comments on projects and tasks
-- Real-time delivery via WebSockets
+- Assignment and status tracking
+- Subtasks and dependencies
+- Bulk updates
 
 ### Notifications
-- In-app notifications with read/unread state
-- Real-time push via Django Channels
-- Mark all read, delete individual
-
-### Audit Logs
-- Every create/update/delete action logged with user, IP, timestamp
-- Organization-scoped activity feed
-- Cursor-paginated for infinite scroll
-
-### Analytics & Reports
-- Dashboard stats: total projects, tasks by status, user counts
-- Revenue analytics, seller performance (multi-tenant metrics)
-- Comprehensive report generation
-- Real-time dashboard with Redis-cached data
+- Real-time WebSocket notifications
+- Read/unread management
 
 ### Billing
-- Plan management (Free, Basic, Pro) with per-plan feature limits and Stripe price mapping
-- **Stripe Checkout integration** — self-serve subscription upgrades via Stripe-hosted checkout (test mode)
-- **Webhook-driven activation** — subscriptions, invoices, and organization plan state sync automatically on payment events (`checkout.session.completed`, `invoice.paid`, `invoice.payment_failed`, `customer.subscription.deleted`)
-- **Idempotent webhook processing** — duplicate Stripe events (a documented Stripe behavior) are detected and skipped, preventing double-charged transaction records
-- Manual upgrade request + admin approval workflow, kept in sync with the Stripe path via a shared subscription-sync helper
-- Self-serve cancellation (cancel at end of billing period, preserving paid-for access)
-- 24 dedicated tests covering checkout, webhook processing, upgrade requests, admin approval, and cancellation (mocked Stripe API — no real API calls in test suite)
+- Stripe Checkout
+- Subscription management
+- Webhook synchronization
 
 > ⚠️ Currently configured for Stripe **test mode** only — live payments are pending regional availability. Switching to production is a matter of swapping test API keys for live keys; no code changes required.
 
@@ -203,41 +161,17 @@ This platform uses a **shared database with row-level tenant isolation** — eve
 
 ## 📡 API Endpoints
 
-| Module         | Endpoint                          | Methods         |
-| -------------- | --------------------------------- | --------------- |
-| Auth           | `/api/auth/register/`             | POST            |
-| Auth           | `/api/auth/login/`                | POST            |
-| Auth           | `/api/auth/token/refresh/`        | POST            |
-| Auth           | `/api/auth/profile/`              | GET, PUT, PATCH |
-| Auth           | `/api/auth/verify-email/`         | POST            |
-| Auth           | `/api/auth/forgot-password/`      | POST            |
-| Organizations  | `/api/organizations/`             | GET, PUT, PATCH |
-| Organizations  | `/api/organizations/invite/`      | POST            |
-| Projects       | `/api/projects/`                  | GET, POST       |
-| Projects       | `/api/projects/<id>/`             | GET, PUT, PATCH, DELETE |
-| Projects       | `/api/projects/search/`           | GET             |
-| Projects       | `/api/projects/bulk-delete/`      | POST            |
-| Projects       | `/api/projects/bulk-archive/`     | POST            |
-| Projects       | `/api/projects/dashboard/stats/`  | GET             |
-| Projects       | `/api/projects/export/projects/csv/` | GET          |
-| Tasks          | `/api/projects/tasks/`            | GET, POST       |
-| Tasks          | `/api/projects/tasks/<id>/`       | GET, PUT, PATCH, DELETE |
-| Tasks          | `/api/projects/tasks/search/`     | GET             |
-| Tasks          | `/api/projects/tasks/bulk-update/`| POST            |
-| Notifications  | `/api/notifications/`             | GET             |
-| Notifications  | `/api/notifications/mark-all-read/` | POST          |
-| Analytics      | `/api/analytics/dashboard/`       | GET             |
-| Audit          | `/api/audit/`                     | GET             |
-| Search         | `/api/search/global/`             | GET             |
-| Billing        | `/api/billing/plans/`             | GET             |
-| Webhooks       | `/api/webhooks/`                  | GET, POST       |
-| Billing        | `/api/billing/plans/`             | GET             |
-| Billing        | `/api/billing/subscription/`      | GET             |
-| Billing        | `/api/billing/checkout/`          | POST            |
-| Billing        | `/api/billing/upgrade/request/`   | POST            |
-| Billing        | `/api/billing/cancel/`            | POST            |
-| Billing        | `/api/billing/webhook/stripe/`    | POST            |
-Full interactive documentation: `/api/docs/`
+| Resource | Base Endpoint |
+|----------|---------------|
+| Authentication | `/api/auth/*` |
+| Organizations | `/api/organizations/*` |
+| Projects | `/api/projects/*` |
+| Tasks | `/api/projects/tasks/*` |
+| Notifications | `/api/notifications/*` |
+| Billing | `/api/billing/*` |
+| Webhooks | `/api/webhooks/*` |
+
+> 📖 Full interactive API documentation (Swagger/OpenAPI) is available at **`/api/docs/`**.
 
 ---
 
@@ -277,38 +211,21 @@ curl -X POST http://localhost:8080/api/projects/tasks/ \
 
 ## ⚡ Performance Strategy
 
-### Redis Caching
-- Dashboard statistics — 5 min TTL
-- Real-time dashboard — 3 min TTL
-- Project list — 2 min TTL
-- Search results — 1 min TTL
-
-### Database Optimization
-- Indexes on `organization_id`, `created_at`, and all foreign keys
-- `select_related()` for ForeignKey traversals
-- `prefetch_related()` for reverse relations
-- `defer()` for large text fields not needed in list views
-
-### API Performance
-- Pagination on all list endpoints (20 per page default)
-- Cursor pagination for activity feeds (infinite scroll)
-- Query count optimization in serializers
+Caching
+Database Optimization
+API Optimization
 
 ---
 
 ## 🔌 Real-Time Architecture
 
-Client WebSocket
-↓
-Nginx (/ws/ route)
-↓
-Daphne (ASGI server, port 8001)
-↓
-Django Channels
-↓
-Redis Channel Layer
-
-Supported events: task updates, new notifications, user activity
+flowchart TD
+    Client --> Nginx
+    Nginx --> Gunicorn
+    Nginx --> Daphne
+    Gunicorn --> PostgreSQL
+    Gunicorn --> Redis
+    Redis --> Celery
 
 ---
 
@@ -366,18 +283,20 @@ docker-compose exec web pytest --cov=. --cov-report=term-missing
 
 ### Test Coverage: 87% (147 tests)
 
-| Test Category              | Status |
-|---------------------------|--------|
-| Authentication & JWT       | ✅ 27 tests |
-| Email Verification         | ✅ 4 tests  |
-| Organization Management    | ✅ 15 tests |
-| Multi-Tenant Isolation     | ✅ 6 tests  |
-| Project API                | ✅ 29 tests |
-| Task API                   | ✅ 14 tests |
-| Permission & Role Tests    | ✅ 19 tests |
-| Integration Workflows      | ✅ 3 tests  |
-| Export Tests               | ✅ 2 tests  |
-| Edge Cases                 | ✅ 23 tests |
+147 automated tests
+
+### Test Coverage
+
+- 147 automated tests
+- 87% code coverage
+- Authentication
+- Tenant isolation
+- Permissions
+- Project & Task APIs
+- Billing
+- Edge cases
+
+....
 
 ---
 
@@ -405,31 +324,15 @@ Access points:
 ## 🔑 Environment Variables
 
 ```env
-SECRET_KEY=your-secret-key
-DEBUG=False
-ALLOWED_HOSTS=localhost,127.0.0.1
+DATABASE_URL=
+REDIS_URL=
+SECRET_KEY=
 
-DB_NAME=multitenant_db
-DB_USER=postgres
-DB_PASSWORD=yourpassword
-DB_HOST=db
-DB_PORT=5432
+STRIPE_SECRET_KEY=
+EMAIL_HOST_USER=
 
-REDIS_URL=redis://redis:6379/0
-CELERY_BROKER_URL=redis://redis:6379/0
-CELERY_RESULT_BACKEND=redis://redis:6379/0
+...
 
-STRIPE_SECRET_KEY=sk_test_your_key
-STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
-
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_HOST_USER=your@email.com
-EMAIL_HOST_PASSWORD=yourpassword
-EMAIL_USE_TLS=True
-DEFAULT_FROM_EMAIL=noreply@yourdomain.com
-
-FRONTEND_URL=http://localhost:3000
 ```
 
 ---
@@ -440,15 +343,16 @@ FRONTEND_URL=http://localhost:3000
 docker-compose up --build
 ```
 
-| Service      | Description                        | Port  |
-|--------------|------------------------------------|-------|
-| web          | Django + Gunicorn (HTTP)           | 8000  |
-| daphne       | Django Channels (WebSocket)        | 8001  |
-| nginx        | Reverse proxy                      | 8080  |
-| db           | PostgreSQL 16                      | 5434  |
-| redis        | Cache + Message broker             | 6381  |
-| celery       | Background task worker             | —     |
-| celery-beat  | Periodic task scheduler            | —     |
+| Service     | Purpose       |
+| ----------- | ------------- |
+| web         | Django API    |
+| daphne      | WebSockets    |
+| nginx       | Reverse Proxy |
+| postgres    | Database      |
+| redis       | Cache/Broker  |
+| celery      | Worker        |
+| celery-beat | Scheduler     |
+
 
 ---
 
