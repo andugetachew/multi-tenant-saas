@@ -1,5 +1,5 @@
 # Multi-Tenant SaaS Platform — Backend API
-
+![Stripe](https://img.shields.io/badge/Stripe-test%20mode-635bff?logo=stripe&logoColor=white)
 ![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-147%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
@@ -182,9 +182,15 @@ This platform uses a **shared database with row-level tenant isolation** — eve
 - Real-time dashboard with Redis-cached data
 
 ### Billing
-- Plan management (Trial, Basic, Pro)
-- Subscription status tracking
-- Upgrade request workflow with admin approval
+- Plan management (Free, Basic, Pro) with per-plan feature limits and Stripe price mapping
+- **Stripe Checkout integration** — self-serve subscription upgrades via Stripe-hosted checkout (test mode)
+- **Webhook-driven activation** — subscriptions, invoices, and organization plan state sync automatically on payment events (`checkout.session.completed`, `invoice.paid`, `invoice.payment_failed`, `customer.subscription.deleted`)
+- **Idempotent webhook processing** — duplicate Stripe events (a documented Stripe behavior) are detected and skipped, preventing double-charged transaction records
+- Manual upgrade request + admin approval workflow, kept in sync with the Stripe path via a shared subscription-sync helper
+- Self-serve cancellation (cancel at end of billing period, preserving paid-for access)
+- 24 dedicated tests covering checkout, webhook processing, upgrade requests, admin approval, and cancellation (mocked Stripe API — no real API calls in test suite)
+
+> ⚠️ Currently configured for Stripe **test mode** only — live payments are pending regional availability. Switching to production is a matter of swapping test API keys for live keys; no code changes required.
 
 ### Additional Modules
 - **Webhooks** — configurable outbound webhooks per organization
@@ -225,7 +231,12 @@ This platform uses a **shared database with row-level tenant isolation** — eve
 | Search         | `/api/search/global/`             | GET             |
 | Billing        | `/api/billing/plans/`             | GET             |
 | Webhooks       | `/api/webhooks/`                  | GET, POST       |
-
+| Billing        | `/api/billing/plans/`             | GET             |
+| Billing        | `/api/billing/subscription/`      | GET             |
+| Billing        | `/api/billing/checkout/`          | POST            |
+| Billing        | `/api/billing/upgrade/request/`   | POST            |
+| Billing        | `/api/billing/cancel/`            | POST            |
+| Billing        | `/api/billing/webhook/stripe/`    | POST            |
 Full interactive documentation: `/api/docs/`
 
 ---
@@ -408,6 +419,9 @@ REDIS_URL=redis://redis:6379/0
 CELERY_BROKER_URL=redis://redis:6379/0
 CELERY_RESULT_BACKEND=redis://redis:6379/0
 
+STRIPE_SECRET_KEY=sk_test_your_key
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_HOST_USER=your@email.com
@@ -452,6 +466,11 @@ Single Redis instance serves both Celery task queue and Django cache layer, redu
 ### pytest over Django TestCase
 Chose pytest for cleaner fixture management, better parametrize support, and more readable assertions — especially important for multi-tenant isolation tests that require complex setup.
 
+### Dual Billing Path: Stripe Checkout + Manual Approval
+Rather than routing every plan change through Stripe, the platform keeps two paths that share a single sync mechanism. Self-serve plans (Basic, Pro) go through Stripe Checkout for instant, unattended activation — the expected UX for standard SaaS pricing tiers. A manual request-and-approve flow remains available for cases that don't fit a fixed self-serve price (negotiated terms, non-Stripe regions, admin-granted upgrades). Both paths call the same sync helper after activation, keeping `Organization` and `Subscription` state consistent regardless of which path was used.
+
+### Webhook Idempotency
+Stripe explicitly documents that webhook events can be delivered more than once for the same event ID (network retries, timeouts). Incoming events are checked against a processed-events table before handling — duplicate deliveries are acknowledged but skipped, preventing double-recorded transactions or repeated state changes.
 ---
 
 ## 📄 License
