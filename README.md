@@ -9,6 +9,12 @@
 ![Celery](https://img.shields.io/badge/Celery-enabled-green)
 ![Docker](https://img.shields.io/badge/Docker-enabled-blue)
 
+
+## Multi-Tenant SaaS Platform
+
+>A scalable SaaS backend that enables multiple organizations to use the same application securely with complete data isolation. Built with Django REST Framework, it implements tenant-aware architecture, role-based permissions, JWT authentication, and production-ready API design patterns.
+
+
 ## 🌐 Live Demo
 
 | | URL |
