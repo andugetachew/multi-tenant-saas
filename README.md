@@ -1,7 +1,7 @@
 # Multi-Tenant SaaS Platform — Backend API
 ![Stripe](https://img.shields.io/badge/Stripe-test%20mode-635bff?logo=stripe&logoColor=white)
 ![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen)
-![Tests](https://img.shields.io/badge/tests-147%20passed-brightgreen)
+![Tests](https://img.shields.io/badge/tests-499%20passed-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Django](https://img.shields.io/badge/django-5.2-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
@@ -28,7 +28,7 @@
 
 ## 📊 Quality Metrics
 
-- 147 automated tests
+- 499 automated tests
 - 87% code coverage
 - Multi-tenant isolation tests included
 - Integration + unit + permission test layers
@@ -62,7 +62,7 @@ A Django REST Framework backend that demonstrates multi-tenant SaaS architecture
 - Background task processing with Celery and Redis
 - Redis caching for dashboard stats, project lists, and search results
 - Nginx reverse proxy with Gunicorn (HTTP) and Daphne (WebSocket)
-- 147 automated tests with 87% code coverage across unit, integration, and permission tests
+- 499 automated tests with 87% code coverage across unit, integration, and permission tests
 
 ---
 
@@ -289,11 +289,11 @@ docker-compose exec web pytest --cov=. --cov-report=term-missing
 
 ### Test Coverage: 87% (147 tests)
 
-147 automated tests
+499 automated tests
 
 ### Test Coverage
 
-- 147 automated tests
+- 499  automated tests
 - 87% code coverage
 - Authentication
 - Tenant isolation
