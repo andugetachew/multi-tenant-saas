@@ -22,11 +22,13 @@ def health_check(request):
         health_status["checks"]["database"] = "down"
 
     # Cache check
+    
     try:
         cache.set("health_check", "ok", 10)
         if cache.get("health_check") == "ok":
             health_status["checks"]["cache"] = "up"
         else:
+            health_status["status"] = "unhealthy"
             health_status["checks"]["cache"] = "down"
     except:
         health_status["status"] = "unhealthy"

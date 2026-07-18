@@ -12,12 +12,7 @@ def pytest_configure(config):
     settings.TESTING = True
     settings.CELERY_TASK_ALWAYS_EAGER = True
     settings.CELERY_TASK_EAGER_PROPAGATES = True
-
-def pytest_sessionstart(session):
-    from django.conf import settings
-    settings.REST_FRAMEWORK['DEFAULT_THROTTLE_CLASSES'] = []
-    settings.REST_FRAMEWORK['DEFAULT_THROTTLE_RATES'] = {}
-
+    
 @pytest.fixture
 def api_client():
     """Return DRF API client"""

@@ -2,12 +2,12 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
 from organizations.models import Organization
-
+from django.conf import settings
 from django.test import override_settings
 
 @override_settings(REST_FRAMEWORK={
-    'DEFAULT_THROTTLE_CLASSES': [],
-    'DEFAULT_THROTTLE_RATES': {}
+    **settings.REST_FRAMEWORK,
+    "DEFAULT_THROTTLE_CLASSES": [],
 })
 class AuthIntegrationTests(TestCase):
 

@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.core.serializers.json import DjangoJSONEncoder
 from projects.models import Project, Task
 
 
@@ -8,12 +9,11 @@ class AdvancedSearch:
         self.org = user.organization
 
     def search_all(self, query):
-        results = {
-            "projects": self.search_projects(query),
-            "tasks": self.search_tasks(query),
-            "comments": self.search_comments(query),
+        return {
+            "projects": list(self.search_projects(query)),
+            "tasks": list(self.search_tasks(query)),
+            "comments": list(self.search_comments(query)),
         }
-        return results
 
     def search_projects(self, query):
         return Project.objects.filter(

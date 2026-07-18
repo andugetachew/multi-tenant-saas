@@ -1,6 +1,6 @@
 from celery import shared_task
 import requests
-from datetime import datetime
+from django.utils import timezone
 from .models import Webhook, WebhookDelivery
 
 
@@ -18,7 +18,7 @@ def deliver_webhook(self, webhook_id, event, payload):
             json={
                 "event": event,
                 "data": payload,
-                "timestamp": datetime.now().isoformat(),
+                "timestamp": timezone.now().isoformat(),
             },
             headers={"X-Webhook-Secret": webhook.secret},
             timeout=10,
@@ -27,7 +27,7 @@ def deliver_webhook(self, webhook_id, event, payload):
         delivery.response_status = response.status_code
         delivery.response_body = response.text[:500]
         delivery.success = 200 <= response.status_code < 300
-        delivery.completed_at = datetime.now()
+        delivery.completed_at = timezone.now()
         delivery.save()
 
         if not delivery.success:

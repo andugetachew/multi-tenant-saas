@@ -4,11 +4,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.throttling import UserRateThrottle
 from rest_framework.exceptions import PermissionDenied
-from projects.serializers import ProjectSerializer, TaskSerializer
+from projects.serializers import ProjectSerializer, TaskSerializer,TaskTemplateSerializer
 from accounts.permissions import IsAdminOrOwner
 from notifications.utils import create_notification
 from core.throttles import BurstRateThrottle, OrganizationRateThrottle
-from organizations.limits import check_org_limit, get_remaining_limit
+from billing.utils import check_org_limit, get_remaining_limit
 from .search import ProjectSearch, TaskSearch
 from .models import Project, Task
 import logging
@@ -523,6 +523,7 @@ class RecurringTaskListCreateView(generics.ListCreateAPIView):
 
 
 class TaskTemplateListCreateView(generics.ListCreateAPIView):
+    serializer_class = TaskTemplateSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
@@ -535,6 +536,7 @@ class TaskTemplateListCreateView(generics.ListCreateAPIView):
 
 
 class TaskTemplateDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TaskTemplateSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):

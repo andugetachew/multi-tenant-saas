@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from core.cache_config import cache_service
 from .elastic import AdvancedSearch
 import hashlib
-
+from django.core.serializers.json import DjangoJSONEncoder
 
 class CachedGlobalSearchView(APIView):
     """FAANG-level: Search result caching with query normalization"""
@@ -41,7 +41,8 @@ class CachedGlobalSearchView(APIView):
         results = search.search_all(query)
 
         # Cache with appropriate TTL
-        cache_service.redis_client.setex(cache_key, ttl, json.dumps(results))
+        cache_service.redis_client.setex(cache_key, ttl, json.dumps(results, cls=DjangoJSONEncoder))
+
 
         return Response(results)
 

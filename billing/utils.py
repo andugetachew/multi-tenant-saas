@@ -95,3 +95,26 @@ def sync_org_from_subscription(subscription):
     org.plan = subscription.plan.slug if subscription.plan else "free"
     org.subscription_status = subscription.status
     org.save(update_fields=["plan", "subscription_status"])
+def check_feature_access(organization, feature_name):
+    """Check if organization's plan/subscription grants access to a feature"""
+    if not organization:
+        return False
+
+    subscription = get_organization_subscription(organization)
+
+    if not subscription or subscription.status != "active":
+        return False
+
+    feature_map = {
+        "realtime_analytics": "has_real_time_analytics",
+        "advanced_exports": "has_advanced_exports",
+        "priority_support": "has_priority_support",
+        "api_access": "has_api_access",
+        "audit_logs": "has_audit_logs",
+    }
+
+    field_name = feature_map.get(feature_name)
+    if not field_name:
+        return False
+
+    return getattr(subscription, field_name, False)

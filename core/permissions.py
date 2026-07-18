@@ -219,7 +219,7 @@ class OrganizationQuotaCheck(BasePermission):
             return False
 
         # Get quota limit from subscription
-        from organizations.limits import check_org_limit
+        from billing.utils import check_org_limit
 
         resource_type = getattr(view, "quota_resource", "projects")
 

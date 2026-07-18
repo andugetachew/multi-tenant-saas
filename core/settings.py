@@ -60,6 +60,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "organizations.middleware.TenantMiddleware",
+    "billing.middleware.PlanLimitMiddleware",
+    "organizations.middleware.TenantMiddleware",
+    "billing.middleware.PlanLimitMiddleware",
+    "audit.middleware.AuditMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"

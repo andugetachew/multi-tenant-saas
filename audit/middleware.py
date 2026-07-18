@@ -1,5 +1,12 @@
 from .models import AuditLog
 
+METHOD_TO_ACTION = {
+    "POST": "CREATE",
+    "PUT": "UPDATE",
+    "PATCH": "UPDATE",
+    "DELETE": "DELETE",
+}
+
 
 class AuditMiddleware:
     def __init__(self, get_response):
@@ -8,16 +15,15 @@ class AuditMiddleware:
     def __call__(self, request):
         response = self.get_response(request)
 
-        # Log user actions
-        if request.user.is_authenticated and request.method in [
-            "POST",
-            "PUT",
-            "DELETE",
-        ]:
+        if (
+            request.user.is_authenticated
+            and request.user.organization
+            and request.method in METHOD_TO_ACTION
+        ):
             AuditLog.objects.create(
                 organization=request.user.organization,
                 user=request.user,
-                action=request.method,
+                action=METHOD_TO_ACTION[request.method],
                 model_name="API Request",
                 object_id=0,
                 object_name=request.path,
